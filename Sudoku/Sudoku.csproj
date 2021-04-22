@@ -35,6 +35,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="Practicumopdracht_DP1_2021_Sudoku.pdf" />
+    <None Include="Rubric Design Patterns 1 2020-2021.pdf" />
+    <None Include="Puzzles\puzzle.4x4" />
+    <None Include="Puzzles\puzzle.6x6" />
+    <None Include="Puzzles\puzzle.9x9" />
+    <None Include="Puzzles\puzzle.jigsaw" />
+    <None Include="Puzzles\puzzle.samurai" />
+    <None Include="Puzzles\puzzle2.4x4" />
+    <None Include="Puzzles\puzzle3.4x4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Board.cs" />
@@ -53,6 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Puzzles\puzzle2.6x6.txt" />
+    <Content Include="Puzzles\puzzle2.9x9.txt" />
+    <Content Include="Puzzles\puzzle2.jigsaw.txt" />
+    <Content Include="Puzzles\puzzle2.samurai.txt" />
+    <Content Include="Puzzles\puzzle3.6x6.txt" />
+    <Content Include="Puzzles\puzzle3.9x9.txt" />
+    <Content Include="Puzzles\puzzle3.jigsaw.txt" />
+    <Content Include="Puzzles\puzzle3.samurai.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
