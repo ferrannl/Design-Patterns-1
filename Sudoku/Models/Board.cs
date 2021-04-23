@@ -13,6 +13,8 @@ namespace Sudoku
         {
             get
             {
+
+
                 return _fields;
             }
             set

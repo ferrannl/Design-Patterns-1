@@ -15,6 +15,9 @@ namespace Sudoku
             get { return _x; }
             set
             {
+
+
+
                 _x = value;
             }
         }
