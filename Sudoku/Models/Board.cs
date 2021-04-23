@@ -13,16 +13,11 @@ namespace Sudoku
         {
             get
             {
-
-
                 return _fields;
             }
             set
             {
                 _fields = value;
-
-
-
             }
         }
 
