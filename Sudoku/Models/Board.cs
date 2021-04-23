@@ -20,6 +20,9 @@ namespace Sudoku
             set
             {
                 _fields = value;
+
+
+
             }
         }
 
