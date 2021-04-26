@@ -7,36 +7,39 @@ namespace Sudoku
 {
     public class Cell
     {
+        public List<int> Candidates { get; }
         public int X { get; }
         public int Y { get; }
-        public int Value { get; set; }
-
-        /// <summary>
-        /// 0 = row
-        /// 1 = column
-        /// 2 = box
-        /// </summary>
-        public Field[] Fields { get; }
-
-        public Cell(int x, int y, Field row, Field column, Field box)
+        public int Value
         {
-            X = x;
-            Y = y;
-            Fields[0] = row;
-            Fields[1] = column;
-            Fields[2] = box;
+            get { return _value; }
+            set
+            {
+                if (_edit)
+                {
+                    _value = value;
+                }
+            }
         }
-        public Cell(int x, int y, Field row, Field column, Field box, int value)
+        private List<int> _candidates;
+
+        private bool _edit;
+
+        private int _value;
+
+        public Cell(int x, int y)
         {
             X = x;
             Y = y;
-            Fields[0] = row;
-            Fields[1] = column;
-            Fields[2] = box;
+            _edit = true;
+        }
+
+        public Cell(int x, int y, int value)
+        {
+            X = x;
+            Y = y;
             Value = value;
+            _edit = false;
         }
-
-
-
     }
 }

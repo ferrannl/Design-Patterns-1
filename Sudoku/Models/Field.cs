@@ -7,12 +7,11 @@ namespace Sudoku
 {
     public class Field
     {
-        public Cell Cell
+        private List<Cell> _cells;
+
+        public List<Cell> Cells
         {
-            get => default;
-            set
-            {
-            }
+            get { return _cells; }
         }
     }
 }

@@ -46,6 +46,7 @@
     <None Include="Puzzles\puzzle3.4x4" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Builders\BoardBuilder.cs" />
     <Compile Include="Controllers\BoardController.cs" />
@@ -59,9 +60,12 @@
     <Compile Include="Parsers\NormalParser.cs" />
     <Compile Include="Models\Row.cs" />
     <Compile Include="Parsers\SamuraiParser.cs" />
+    <Compile Include="Views\InputView.cs" />
+    <Compile Include="Views\OutputView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="Factories\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Puzzles\puzzle2.6x6.txt" />

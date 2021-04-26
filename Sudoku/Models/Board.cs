@@ -7,7 +7,25 @@ namespace Sudoku
 {
     public class Board
     {
-        public List<Field> Fields { get; set; }
+        private List<Field> _fields;
+
+        public List<Field> Fields
+        {
+            get { return _fields; }
+        }
+
+
+        public Board()
+        {
+
+        }
+
+        public bool Check()
+        {
+            bool valid = false;
+
+            return valid;
+        }
 
     }
 }
