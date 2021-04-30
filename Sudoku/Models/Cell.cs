@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Sudoku
 {
+    //component leaf
     public class Cell
     {
         public List<int> Candidates { get; }

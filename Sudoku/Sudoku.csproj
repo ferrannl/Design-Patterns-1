@@ -46,7 +46,10 @@
     <None Include="Puzzles\puzzle3.4x4" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Color.cs" />
+    <Compile Include="Colors.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Builders\BoardBuilder.cs" />
     <Compile Include="Controllers\BoardController.cs" />

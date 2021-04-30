@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Sudoku
+{
+    public enum Color
+    {
+        RED,
+        YELLOW,
+        BLACK
+    }
+}
