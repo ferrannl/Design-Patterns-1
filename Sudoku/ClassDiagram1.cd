@@ -1,121 +1,209 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Comment CommentText="Design Patterns:&#xD;&#xA;&#xD;&#xA;Builder of Factory:&#xD;&#xA;Maken van Bord en/of Fields&#xD;&#xA;&#xD;&#xA;Composite pattern: &#xD;&#xA;Component Cell = leaf&#xD;&#xA;Component Field = Box, Row of Column (en dat zijn weer fields)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;State Pattern:&#xD;&#xA;Voor het bord: Definitief, hulp, definitief+correctie&#xD;&#xA;&#xD;&#xA;Visitor pattern:&#xD;&#xA;Iets met input en/of output view&#xD;&#xA;">
-    <Position X="15.006" Y="0.521" Height="2.823" Width="2.815" />
-  </Comment>
-  <Comment CommentText="Ferran Hendriks (2130858)&#xD;&#xA;Nick van Hoesel (2138178)&#xD;&#xA;9-5-2021">
-    <Position X="0.5" Y="0.5" Height="0.75" Width="1.7" />
+  <Comment CommentText="Ferran Hendriks (2130858)&#xD;&#xA;Nick van Hoesel (2138178)&#xD;&#xA;13-5-2021&#xD;&#xA;">
+    <Position X="1.772" Y="0.784" Height="0.954" Width="1.868" />
   </Comment>
   <Class Name="Sudoku.Board" Collapsed="true">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="10" Y="2.25" Width="1.5" />
+    <AssociationLine Name="IState" Type="Sudoku.IState">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.324" Y="0.146" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Models\Board.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Field" />
+      <Property Name="IState" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.Row">
-    <Position X="4.25" Y="3.25" Width="1.5" />
+    <Position X="5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Row.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.Column">
-    <Position X="6.5" Y="3.25" Width="1.5" />
+    <Position X="7.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Column.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.Box">
-    <Position X="2" Y="3.25" Width="1.5" />
+    <Position X="2.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Box.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.Field">
-    <Position X="4" Y="0.5" Width="2" />
+    <Position X="4.75" Y="2.25" Width="2" />
+    <AssociationLine Name="Children" Type="Sudoku.Field">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.435" Y="0.183" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Leaf" Type="Sudoku.Cell">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.144" Y="0.254" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAKAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABAAKEAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
       <FileName>Models\Field.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Children" />
+      <Property Name="Leaf" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Sudoku.BoardBuilder" Collapsed="true">
-    <Position X="10.75" Y="0.5" Width="1.5" />
+  <Class Name="Sudoku.BoardFactory" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
+    <AssociationLine Name="IParser" Type="Sudoku.IParser">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.18" Y="0.134" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Builders\BoardBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Builders\BoardFactory.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Board" />
+      <Property Name="IParser" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.FileReader" Collapsed="true">
-    <Position X="10.75" Y="1.5" Width="1.5" />
+    <Position X="12.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Readers\FileReader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.Cell" Collapsed="true">
-    <Position X="9" Y="1.5" Width="1.5" />
+    <Position X="5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAgACAAYAA=</HashCode>
       <FileName>Models\Cell.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.JigsawParser" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9" Y="2.5" Width="1.5" />
+    <Position X="15" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Parsers\JigsawParser.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sudoku.SamuraiParser" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12.5" Y="2.5" Width="1.5" />
+    <Position X="18.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Parsers\SamuraiParser.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sudoku.NormalParser" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="10.75" Y="2.5" Width="1.5" />
+    <Position X="16.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Parsers\NormalParser.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Sudoku.BoardController" Collapsed="true">
-    <Position X="12.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Controllers\BoardController.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sudoku.GameController" Collapsed="true">
-    <Position X="12.5" Y="1.5" Width="1.5" />
+    <Position X="10" Y="5.5" Width="1.5" />
+    <AssociationLine Name="FileReader" Type="Sudoku.FileReader">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.467" Y="0.194" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="BoardFactory" Type="Sudoku.BoardFactory">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.156" Y="0.278" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="OutputView" Type="Sudoku.Views.OutputView">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.152" Y="0.443" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InputView" Type="Sudoku.Views.InputView">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.01" Y="0.431" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAACQIAAAAAAAAQEAAAAAAA=</HashCode>
       <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FileReader" />
+      <Property Name="BoardFactory" />
+      <Property Name="OutputView" />
+      <Property Name="InputView" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.CandidateState">
+    <Position X="15" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CandidateState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sudoku.DefinitiveState">
+    <Position X="17" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefinitiveState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sudoku.Views.InputView" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InputView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Direction" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.Views.OutputView" Collapsed="true">
+    <Position X="11" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OutputView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Sudoku.IParser" Collapsed="true">
-    <Position X="9" Y="3.75" Width="1.5" />
+    <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Parsers\IParser.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Sudoku.IState">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="Sudoku.Direction" Collapsed="true">
-    <Position X="10.75" Y="4.75" Width="1.5" />
+    <Position X="9.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAICAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Direction.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Sudoku.Color" Collapsed="true">
-    <Position X="9" Y="4.75" Width="1.5" />
+    <Position X="11" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAIAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Color.cs</FileName>

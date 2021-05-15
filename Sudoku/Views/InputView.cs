@@ -8,5 +8,12 @@ namespace Sudoku.Views
 {
     class InputView
     {
+        public Direction Direction
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

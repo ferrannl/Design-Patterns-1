@@ -14,6 +14,21 @@ namespace Sudoku
             get { return _fields; }
         }
 
+        public Field Field
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public IState IState
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         public Board()
         {

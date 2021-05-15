@@ -22,6 +22,7 @@ namespace Sudoku
                 }
             }
         }
+
         private List<int> _candidates;
 
         private bool _edit;

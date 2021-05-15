@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sudoku
 {
-    public class BoardBuilder
+    public class DefinitiveState : IState
     {
     }
 }

@@ -5,10 +5,17 @@ using System.Text;
 
 namespace Sudoku
 {
-    public class BoardController
+    public class BoardFactory
     {
+        public Board Board
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
-        public BoardFactory BoardFactory
+        public IParser IParser
         {
             get => default;
             set
