@@ -42,9 +42,16 @@
   </Class>
   <Class Name="Sudoku.Field">
     <Position X="4.75" Y="2.25" Width="2" />
-    <AssociationLine Name="Children" Type="Sudoku.Field">
+    <AssociationLine Name="Children" Type="Sudoku.Field" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.458" Y="2.25" />
+        <Point X="5.458" Y="1.875" />
+        <Point X="4.375" Y="1.875" />
+        <Point X="4.375" Y="3.625" />
+        <Point X="4.75" Y="3.625" />
+      </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.435" Y="0.183" />
+        <Position X="0.183" Y="0.435" />
       </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="Leaf" Type="Sudoku.Cell">
@@ -85,7 +92,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.Cell" Collapsed="true">
-    <Position X="5" Y="1" Width="1.5" />
+    <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAgACAAYAA=</HashCode>
       <FileName>Models\Cell.cs</FileName>
@@ -148,22 +155,6 @@
       <Property Name="InputView" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Sudoku.CandidateState">
-    <Position X="15" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CandidateState.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Sudoku.DefinitiveState">
-    <Position X="17" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DefinitiveState.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="Sudoku.Views.InputView" Collapsed="true">
     <Position X="9.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
@@ -181,6 +172,22 @@
       <FileName>Views\OutputView.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Sudoku.DefinitiveState">
+    <Position X="17" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\DefinitiveState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sudoku.CandidateState">
+    <Position X="15" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CandidateState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="Sudoku.IParser" Collapsed="true">
     <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
@@ -192,7 +199,7 @@
     <Position X="12.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IState.cs</FileName>
+      <FileName>States\IState.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Sudoku.Direction" Collapsed="true">
