@@ -7,6 +7,10 @@ namespace Sudoku
 {
     public class BoardFactory
     {
+        public BoardFactory()
+        {
+
+        }
         public Board Board
         {
             get => default;
@@ -21,6 +25,19 @@ namespace Sudoku
             set
             {
             }
+        }
+
+        public FileReader FileReader
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public void Build(string filePath)
+        {
+
         }
     }
 }

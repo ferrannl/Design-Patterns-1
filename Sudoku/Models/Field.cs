@@ -20,14 +20,6 @@ namespace Sudoku
             get { return _fields; }
         }
 
-        public Field Children
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public Cell Leaf
         {
             get => default;

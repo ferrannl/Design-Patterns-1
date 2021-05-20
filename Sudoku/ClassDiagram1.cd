@@ -42,16 +42,18 @@
   </Class>
   <Class Name="Sudoku.Field">
     <Position X="4.75" Y="2.25" Width="2" />
-    <AssociationLine Name="Children" Type="Sudoku.Field" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="_fields" Type="Sudoku.Field" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.458" Y="2.25" />
-        <Point X="5.458" Y="1.875" />
-        <Point X="4.375" Y="1.875" />
-        <Point X="4.375" Y="3.625" />
-        <Point X="4.75" Y="3.625" />
+        <Point X="4.75" Y="2.5" />
+        <Point X="4.096" Y="2.5" />
+        <Point X="4.096" Y="3.312" />
+        <Point X="4.75" Y="3.312" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.183" Y="0.435" />
+        <Position X="0.758" Y="0.339" />
       </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="Leaf" Type="Sudoku.Cell">
@@ -60,32 +62,40 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAKEAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABAAKAAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
       <FileName>Models\Field.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Children" />
       <Property Name="Leaf" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_fields" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Sudoku.BoardFactory" Collapsed="true">
     <Position X="10" Y="4" Width="1.5" />
+    <AssociationLine Name="Board" Type="Sudoku.Board">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.498" Y="0.152" />
+      </MemberNameLabel>
+    </AssociationLine>
     <AssociationLine Name="IParser" Type="Sudoku.IParser">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.18" Y="0.134" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Builders\BoardFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Board" />
       <Property Name="IParser" />
+      <Property Name="FileReader" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.FileReader" Collapsed="true">
-    <Position X="12.75" Y="5.5" Width="1.5" />
+    <Position X="6.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Readers\FileReader.cs</FileName>
@@ -124,11 +134,6 @@
   </Class>
   <Class Name="Sudoku.GameController" Collapsed="true">
     <Position X="10" Y="5.5" Width="1.5" />
-    <AssociationLine Name="FileReader" Type="Sudoku.FileReader">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.467" Y="0.194" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="BoardFactory" Type="Sudoku.BoardFactory">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.156" Y="0.278" />
@@ -136,20 +141,19 @@
     </AssociationLine>
     <AssociationLine Name="OutputView" Type="Sudoku.Views.OutputView">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="1.152" Y="0.443" />
+        <Position X="-1.223" Y="0.516" />
       </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="InputView" Type="Sudoku.Views.InputView">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-2.01" Y="0.431" />
+        <Position X="0.25" Y="0.494" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAACQIAAAAAAAAQEAAAAAAA=</HashCode>
+      <HashCode>BAAAAAAAAAIAAAAgEAKAAAAAQJAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Controllers\GameController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="FileReader" />
       <Property Name="BoardFactory" />
       <Property Name="OutputView" />
       <Property Name="InputView" />
@@ -158,7 +162,7 @@
   <Class Name="Sudoku.Views.InputView" Collapsed="true">
     <Position X="9.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\InputView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -168,7 +172,7 @@
   <Class Name="Sudoku.Views.OutputView" Collapsed="true">
     <Position X="11" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\OutputView.cs</FileName>
     </TypeIdentifier>
   </Class>

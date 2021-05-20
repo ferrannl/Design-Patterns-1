@@ -15,5 +15,20 @@ namespace Sudoku.Views
             {
             }
         }
+
+        public string getLine()
+        {
+            return Console.ReadLine();
+        }
+
+        public ConsoleKey GetKey()
+        {
+
+            ConsoleKey key = Console.ReadKey().Key;
+
+            return key;
+
+        }
+
     }
 }

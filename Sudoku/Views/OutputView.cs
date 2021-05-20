@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Sudoku.Views
 {
-    class OutputView
+    public class OutputView
     {
+
+        public void SelectPath()
+        {
+            Console.WriteLine("Type in the path to your puzzle:");
+        }
+
+        public void BuildFailed()
+        {
+            Console.WriteLine("Unable to build board, file contents are incorrect.");
+        }
     }
 }
