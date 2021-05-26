@@ -7,6 +7,19 @@ namespace Sudoku
 {
     public class Board
     {
+        private static Board _instance;
+        public static Board Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Board();
+                }
+                return _instance;
+            }
+        }
+
         private List<Field> _fields;
 
         public List<Field> Fields

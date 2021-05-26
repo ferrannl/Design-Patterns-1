@@ -11,7 +11,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAEAAgAAAAAAAAAAACAAAAAgAAAAAAAQAAAAAAAgAA=</HashCode>
       <FileName>Models\Board.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -76,7 +76,7 @@
     <Position X="10" Y="4" Width="1.5" />
     <AssociationLine Name="Board" Type="Sudoku.Board">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.498" Y="0.152" />
+        <Position X="0.426" Y="0.404" />
       </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="IParser" Type="Sudoku.IParser">
@@ -85,21 +85,21 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAgAAAAAAAACAAAAA=</HashCode>
       <FileName>Builders\BoardFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Board" />
       <Property Name="IParser" />
-      <Property Name="FileReader" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.FileReader" Collapsed="true">
     <Position X="6.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Readers\FileReader.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sudoku.Cell" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
@@ -162,7 +162,7 @@
   <Class Name="Sudoku.Views.InputView" Collapsed="true">
     <Position X="9.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Views\InputView.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

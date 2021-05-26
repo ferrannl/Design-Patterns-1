@@ -62,6 +62,7 @@
     <Compile Include="Parsers\NormalParser.cs" />
     <Compile Include="Models\Row.cs" />
     <Compile Include="Parsers\SamuraiParser.cs" />
+    <Compile Include="Readers\IReader.cs" />
     <Compile Include="States\CandidateState.cs" />
     <Compile Include="States\DefinitiveState.cs" />
     <Compile Include="States\IState.cs" />

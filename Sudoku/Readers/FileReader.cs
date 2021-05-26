@@ -1,20 +1,25 @@
-﻿using System;
+﻿using Sudoku.Readers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Sudoku
 {
-    public class FileReader
+    public class FileReader : IReader
     {
-        //if (file.contains(jigsaw))
 
-        //else if(file.contains(samurai))
+        public void Read(string filepath)
+        {
+            //if (file.contains(jigsaw))
 
-        //else {
+            //else if(file.contains(samurai))
 
-        //file.split(".")[1] [0]
+            //else {
 
-        //}
+            //file.split(".")[1] [0]
+
+            //}        }
+        }
     }
 }

@@ -8,18 +8,17 @@ namespace Sudoku
 {
     public class GameController
     {
-        private InputView _input;
-        private OutputView _output;
-        private BoardFactory _boardFactory;
+        private readonly InputView _input;
+        private readonly OutputView _output;
+        private readonly BoardFactory _boardFactory;
         private Board _board;
         public GameController()
         {
             _input = new InputView();
             _output = new OutputView();
-            _boardFactory = new BoardFactory();
+            _boardFactory = new BoardFactory(new FileReader());
             start();
         }
-
         private void start()
         {
             while (true)
