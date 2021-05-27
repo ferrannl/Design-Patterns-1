@@ -10,6 +10,7 @@ namespace Sudoku
         private List<string> _lines;
         private int _x;
         private int _y;
+        private List<Field> _fields;
         public NormalParser(List<string> lines,string xy)
         {
             _x = int.Parse(xy.Split('x')[0]);
