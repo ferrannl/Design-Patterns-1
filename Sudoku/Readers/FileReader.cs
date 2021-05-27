@@ -3,23 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Sudoku
 {
     public class FileReader : IReader
     {
+        private IParser _parser;
 
-        public void Read(string filepath)
+        public List<string> Read(string filePath)
         {
-            //if (file.contains(jigsaw))
-
-            //else if(file.contains(samurai))
-
-            //else {
-
-            //file.split(".")[1] [0]
-
-            //}        }
+            var text = File.ReadAllLines(filePath);
+            var lines = new List<string>(text);
+            return lines;
         }
     }
 }

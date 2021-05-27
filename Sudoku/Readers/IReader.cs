@@ -8,6 +8,6 @@ namespace Sudoku.Readers
 {
     public interface IReader
     {
-        void Read(string filepath);
+        List<string> Read(string filepath);
     }
 }

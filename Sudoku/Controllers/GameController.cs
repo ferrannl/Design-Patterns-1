@@ -25,7 +25,7 @@ namespace Sudoku
             {
                 _output.SelectPath();
                 _boardFactory.Build(_input.getLine());
-                InputCommandHandler(_input.GetKey());
+                //InputCommandHandler(_input.GetKey());
                 //_output.PrintPlayingField(_board);
             }
         }
