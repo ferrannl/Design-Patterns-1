@@ -16,10 +16,10 @@ namespace Sudoku
             get { return _value; }
             set
             {
-                if (_edit)
-                {
+                //if (_edit)
+                //{
                     _value = value;
-                }
+                //}
             }
         }
 

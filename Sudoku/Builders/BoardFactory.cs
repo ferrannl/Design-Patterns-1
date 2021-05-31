@@ -10,7 +10,8 @@ namespace Sudoku
 {
     public class BoardFactory
     {
-        private IReader _reader; 
+        private IReader _reader;
+        private IParser _parser;
         public BoardFactory(IReader reader)
         {
             _reader = reader;
@@ -24,37 +25,29 @@ namespace Sudoku
             }
         }
 
-        public IParser Parser
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
 
         public void Build(string filePath)
         {
-            _reader.Read(filePath);
+            List<string> lines = _reader.Read(filePath);
             string fileName = Path.GetFileName(filePath);
             string pattern = @"[0-9]+x[0-9]+";
             Match m = Regex.Match(fileName, pattern);
             if (fileName.Contains("jigsaw"))
             {
-                Parser = new JigsawParser();
+                _parser = new JigsawParser();
             }
 
             else if (fileName.Contains("samurai"))
             {
-                Parser = new SamuraiParser();
+                _parser = new SamuraiParser();
             }
 
             else if (m.Success)
             {
-                Console.WriteLine("hello");
-                Console.WriteLine(m);
-                Parser = new NormalParser();
+                _parser = new NormalParser(lines, m.ToString());
             }
+
+            _parser.GenerateFields();
         }
     }
 }

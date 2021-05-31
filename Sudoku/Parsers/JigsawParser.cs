@@ -7,5 +7,9 @@ namespace Sudoku
 {
     public class JigsawParser : IParser
     {
+        public List<Field> GenerateFields()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

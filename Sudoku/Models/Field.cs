@@ -9,6 +9,11 @@ namespace Sudoku
     {
         private List<Cell> _cells;
         private List<Field> _fields;
+        public Field()
+        {
+            _cells = new List<Cell>();
+            _fields = new List<Field>();
+        }
 
         public List<Cell> Cells
         {
