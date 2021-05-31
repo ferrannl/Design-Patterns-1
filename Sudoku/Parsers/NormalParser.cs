@@ -48,6 +48,7 @@ namespace Sudoku
             int boxCountX = 0;
             int boxCountY = 0;
             int boxIndex = 0;
+            int boxCounter = 0;
 
             for (int i = 0; i < _y; i++)
             {
@@ -63,16 +64,12 @@ namespace Sudoku
                 _boxes[boxIndex].Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
                 Console.WriteLine(_lines[0][i]);
                 indexX++;
-                boxCountX++;
-                if (boxCountX == boxX)
+                boxCountY++;
+                if (boxCountY == boxY)
                 {
-                    boxCountX = 0;
-                    boxCountY++;
-                    if (boxCountY == boxY)
-                    {
-                        boxCountY = 0;
-                    }
-                    boxIndex++;
+
+                  
+
                 }
                 if (indexX == (_x))
                 {
