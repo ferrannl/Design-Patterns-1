@@ -20,32 +20,40 @@ namespace Sudoku
         public List<Field> GenerateFields()
         {
             List<Field> _fields = new List<Field>();
-            Field row = new Row();
+            List<Column> _columns = new List<Column>();
+            List<Row> _rows = new List<Row>();
 
             int indexX = 0;
             int indexY = 0;
+            int counter = 0;
+            for (int i = 0; i < _y; i++)
+            {
+                _columns.Add(new Column());
+                _rows.Add(new Row());
+            }
+
             for (int i = 0; i < _lines[0].Length; i++)
             {
-                row.Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
+                _columns[indexX].Cells.Add(new Cell(indexX, counter, int.Parse(_lines[0][i].ToString())));
+                _rows[indexY].Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
                 Console.WriteLine(_lines[0][i]);
                 indexX++;
                 if (indexX == (_x))
                 {
-                    _fields.Add(row);
-                    row = new Row();
+                    counter++;
+                    if (counter == _y)
+                    {
+                        counter = 0;
+                    }
                     indexY++;
                     if (indexY == (_y))
                     {
                         indexY = 0;
                     }
-
                     indexX = 0;
-
                 }
             }
             return _fields;
-
         }
-
     }
 }
