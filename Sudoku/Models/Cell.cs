@@ -18,8 +18,19 @@ namespace Sudoku
             {
                 //if (_edit)
                 //{
-                    _value = value;
+                _value = value;
                 //}
+            }
+        }
+
+        private bool _isSelected;
+
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
             }
         }
 

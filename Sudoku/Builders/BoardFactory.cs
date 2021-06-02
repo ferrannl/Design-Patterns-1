@@ -26,8 +26,9 @@ namespace Sudoku
         }
 
 
-        public void Build(string filePath)
+        public Board Build(string filePath)
         {
+            Board board = new Board();
             List<string> lines = _reader.Read(filePath);
             string fileName = Path.GetFileName(filePath);
             string pattern = @"[0-9]+x[0-9]+";
@@ -44,10 +45,12 @@ namespace Sudoku
 
             else if (m.Success)
             {
-                _parser = new NormalParser(lines, m.ToString());
+                _parser = new NormalParser(lines, m.ToString(), board);
             }
 
-            _parser.GenerateFields();
+            board.Fields.AddRange(_parser.GenerateFields());
+            return board;
         }
+
     }
 }

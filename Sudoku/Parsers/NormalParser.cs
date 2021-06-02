@@ -8,13 +8,15 @@ namespace Sudoku
     public class NormalParser : IParser
     {
         private List<string> _lines;
+        private Board _board;
         private int _x;
         private int _y;
-        public NormalParser(List<string> lines, string xy)
+        public NormalParser(List<string> lines, string xy, Board board)
         {
             _x = int.Parse(xy.Split('x')[0]);
             _y = int.Parse(xy.Split('x')[1]);
             _lines = lines;
+            _board = board;
         }
 
         public List<Field> GenerateFields()
@@ -45,9 +47,6 @@ namespace Sudoku
 
             int indexX = 0;
             int indexY = 0;
-            int boxCountX = 0;
-            int boxCountY = 0;
-            int boxIndex = 0;
 
             for (int i = 0; i < _y; i++)
             {
@@ -58,22 +57,11 @@ namespace Sudoku
 
             for (int i = 0; i < _lines[0].Length; i++)
             {
-                _columns[indexX].Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
-                _rows[indexY].Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
-                _boxes[boxIndex].Cells.Add(new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString())));
-                Console.WriteLine(_lines[0][i]);
+                Cell cell = new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString()));
+                _columns[indexX].Cells.Add(cell);
+                _rows[indexY].Cells.Add(cell);
+                _boxes[AssignSudokuBox(i, boxY, boxX)].Cells.Add(cell);
                 indexX++;
-                boxCountX++;
-                if (boxCountX == boxX)
-                {
-                    boxCountX = 0;
-                    boxCountY++;
-                    if (boxCountY == boxY)
-                    {
-                        boxCountY = 0;
-                    }
-                    boxIndex++;
-                }
                 if (indexX == (_x))
                 {
                     indexY++;
@@ -84,7 +72,34 @@ namespace Sudoku
                     indexX = 0;
                 }
             }
+            _fields.AddRange(_columns);
+            _fields.AddRange(_rows);
+            _fields.AddRange(_boxes);
+
+
+            //NICK CHECK DEZE SHIT
+            //foreach (var field in _fields)
+            //{
+            //    field.Cells.Find(cell => cell.X == _x && cell.Y == _y);
+
+            //}
+
+
             return _fields;
+        }
+        public int AssignSudokuBox(int rowIndex, int m, int n)
+        {
+            // index, if devided to pieces n x 1
+            int nChunkIndex = rowIndex / n;
+
+            // every row has m of those pieces and there are m rows in each box
+            int row = nChunkIndex / (m * m);
+
+            int column = nChunkIndex % m;
+
+            int result = column + row * m;
+
+            return result;
         }
     }
 }
