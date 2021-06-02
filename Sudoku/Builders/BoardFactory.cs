@@ -48,8 +48,7 @@ namespace Sudoku
                 _parser = new NormalParser(lines, m.ToString(), board);
             }
 
-            board.Fields.AddRange(_parser.GenerateFields());
-            return board;
+            return _parser.GenerateBoard();
         }
 
     }

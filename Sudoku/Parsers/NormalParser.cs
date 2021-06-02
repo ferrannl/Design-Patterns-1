@@ -19,7 +19,7 @@ namespace Sudoku
             _board = board;
         }
 
-        public List<Field> GenerateFields()
+        public Board GenerateBoard()
         {
             int boxX = 0;
             int boxY = 0;
@@ -44,6 +44,9 @@ namespace Sudoku
                     boxY = 3;
                     break;
             }
+
+            _board.Xboxes = boxX;
+            _board.Yboxes = boxY;
 
             int indexX = 0;
             int indexY = 0;
@@ -76,6 +79,7 @@ namespace Sudoku
             _fields.AddRange(_rows);
             _fields.AddRange(_boxes);
 
+            _board.Fields.AddRange(_fields);
 
             //NICK CHECK DEZE SHIT
             //foreach (var field in _fields)
@@ -85,7 +89,7 @@ namespace Sudoku
             //}
 
 
-            return _fields;
+            return _board;
         }
         public int AssignSudokuBox(int rowIndex, int m, int n)
         {

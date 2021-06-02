@@ -7,6 +7,6 @@ namespace Sudoku
 {
     public interface IParser
     {
-        List<Field> GenerateFields();
+        Board GenerateBoard();
     }
 }
