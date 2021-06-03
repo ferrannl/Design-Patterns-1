@@ -64,7 +64,6 @@ namespace Sudoku
         public bool Check()
         {
             bool valid = false;
-
             return valid;
         }
 
@@ -72,7 +71,7 @@ namespace Sudoku
         {
             foreach (var field in _fields)
             {
-                var current = field.Cells.Find(cell => cell.X == 0 && cell.Y == 0);
+                Cell current = field.Cells.Find(cell => cell.X == 2 && cell.Y == 3);
                 if (current != null)
                 {
                     CurrentCell = current;
@@ -84,7 +83,7 @@ namespace Sudoku
         {
             foreach (var field in _fields)
             {
-                var nextCell = field.Cells.Find(cell => cell.X == CurrentCell.X + x && cell.Y == CurrentCell.Y + y);
+                Cell nextCell = field.Cells.Find(cell => cell.X == CurrentCell.X + x && cell.Y == CurrentCell.Y + y);
                 if (nextCell != null)
                 {
                     CurrentCell = nextCell;
