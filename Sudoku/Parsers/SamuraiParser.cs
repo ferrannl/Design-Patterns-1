@@ -7,9 +7,10 @@ namespace Sudoku
 {
     public class SamuraiParser : IParser
     {
-        public List<Field> GenerateFields()
+        public Board GenerateBoard()
         {
             throw new NotImplementedException();
         }
+
     }
 }

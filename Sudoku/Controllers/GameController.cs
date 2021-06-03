@@ -12,27 +12,87 @@ namespace Sudoku
         private readonly OutputView _output;
         private readonly BoardFactory _boardFactory;
         private Board _board;
+        private bool _levelSelected;
+        private bool _playing;
         public GameController()
         {
             _input = new InputView();
             _output = new OutputView();
             _boardFactory = new BoardFactory(new FileReader());
+            _levelSelected = false;
+            _playing = false;
             start();
         }
         private void start()
         {
-            while (true)
+            while (!_levelSelected)
             {
                 _output.SelectPath();
-                _board = _boardFactory.Build(_input.getLine());
-                //InputCommandHandler(_input.GetKey());
-                _output.DrawBoard(_board);
+                try
+                {
+                    _board = _boardFactory.Build(_input.getLine());
+                    if (_board != null)
+                    {
+                        _levelSelected = true;
+                    }
+                    else
+                    {
+                        _output.RetrySelection();
+                    }
+                }
+                catch (Exception e)
+                {
+                    _output.RetrySelection();
+                }
+
+            }
+
+            _playing = true;
+            this.play();
+        }
+
+        private void InputCommandHandler(ConsoleKey key)
+        {
+            int value;
+            bool isNumerical = int.TryParse(key.ToString().Split('D')[1], out value);
+            if (!isNumerical)
+            {
+                switch (key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        break;
+                    case ConsoleKey.UpArrow:
+                        break;
+                    case ConsoleKey.RightArrow:
+                        break;
+                    case ConsoleKey.DownArrow:
+                        break;
+
+                }
+            }
+            else
+            {
+                if (value > 0 && value < 10)
+                {
+                    _board.CurrentCell.Value = value;
+                    _output.DrawBoard(_board);
+                }
+                else
+                {
+                    _output.HelpCommands();
+                }
             }
         }
 
-        private void InputCommandHandler(object p)
+        private void play()
         {
-            throw new NotImplementedException();
+            _output.DrawBoard(_board);
+            while (_playing)
+            {
+                InputCommandHandler(_input.GetKey());
+
+            }
+
         }
 
         private FileReader _fileReader;

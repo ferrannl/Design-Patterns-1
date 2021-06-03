@@ -9,7 +9,16 @@ namespace Sudoku
     {
         private int _xboxes;
         private int _yboxes;
+        private Cell _currentCell;
 
+        public Cell CurrentCell
+        {
+            get { return _currentCell; }
+            set
+            {
+                _currentCell = value;
+            }
+        }
         public int Xboxes
         {
             get { return _xboxes; }

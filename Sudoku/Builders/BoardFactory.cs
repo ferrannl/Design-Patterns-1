@@ -33,6 +33,7 @@ namespace Sudoku
             string fileName = Path.GetFileName(filePath);
             string pattern = @"[0-9]+x[0-9]+";
             Match m = Regex.Match(fileName, pattern);
+
             if (fileName.Contains("jigsaw"))
             {
                 _parser = new JigsawParser();
@@ -48,8 +49,13 @@ namespace Sudoku
                 _parser = new NormalParser(lines, m.ToString(), board);
             }
 
-            return _parser.GenerateBoard();
-        }
+            if (_parser != null)
+            {
+                board = _parser.GenerateBoard();
+                return board;
 
+            }
+            return null;
+        }
     }
 }

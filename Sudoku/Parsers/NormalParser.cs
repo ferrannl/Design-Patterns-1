@@ -36,8 +36,8 @@ namespace Sudoku
                     boxY = 2;
                     break;
                 case 6:
-                    boxX = 3;
-                    boxY = 2;
+                    boxX = 2;
+                    boxY = 3;
                     break;
                 case 9:
                     boxX = 3;
