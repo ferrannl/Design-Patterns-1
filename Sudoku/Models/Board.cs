@@ -75,6 +75,7 @@ namespace Sudoku
                 if (current != null)
                 {
                     CurrentCell = current;
+                    break;
                 }
             }
         }
@@ -87,6 +88,7 @@ namespace Sudoku
                 if (nextCell != null)
                 {
                     CurrentCell = nextCell;
+                    break;
                 }
             }
         }
