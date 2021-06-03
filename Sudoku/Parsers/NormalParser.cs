@@ -80,15 +80,6 @@ namespace Sudoku
             _fields.AddRange(_boxes);
 
             _board.Fields.AddRange(_fields);
-
-            //NICK CHECK DEZE SHIT
-            //foreach (var field in _fields)
-            //{
-            //    field.Cells.Find(cell => cell.X == _x && cell.Y == _y);
-
-            //}
-
-
             return _board;
         }
         public int AssignSudokuBox(int rowIndex, int m, int n)

@@ -21,10 +21,10 @@ namespace Sudoku.Views
             return Console.ReadLine();
         }
 
-        public ConsoleKey GetKey()
+        public ConsoleKeyInfo GetKey()
         {
 
-            ConsoleKey key = Console.ReadKey().Key;
+            ConsoleKeyInfo key = Console.ReadKey();
 
             return key;
 

@@ -46,29 +46,33 @@ namespace Sudoku
                 }
 
             }
-
+            _board.SetStartCell();
             _playing = true;
             this.play();
         }
 
-        private void InputCommandHandler(ConsoleKey key)
+        private void InputCommandHandler(ConsoleKeyInfo key)
         {
             int value;
-            bool isNumerical = int.TryParse(key.ToString().Split('D')[1], out value);
+            bool isNumerical = int.TryParse(key.KeyChar.ToString(), out value);
             if (!isNumerical)
             {
-                switch (key)
+                switch (key.Key)
                 {
                     case ConsoleKey.LeftArrow:
+                        _board.Move(-1, 0);
                         break;
                     case ConsoleKey.UpArrow:
+                        _board.Move(0, -1);
                         break;
                     case ConsoleKey.RightArrow:
+                        _board.Move(1, 0);
                         break;
                     case ConsoleKey.DownArrow:
+                        _board.Move(0, 1);
                         break;
-
                 }
+                _output.DrawBoard(_board);
             }
             else
             {
@@ -79,6 +83,7 @@ namespace Sudoku
                 }
                 else
                 {
+                    _output.DrawBoard(_board);
                     _output.HelpCommands();
                 }
             }

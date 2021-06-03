@@ -68,5 +68,29 @@ namespace Sudoku
             return valid;
         }
 
+        public void SetStartCell()
+        {
+            foreach (var field in _fields)
+            {
+                var current = field.Cells.Find(cell => cell.X == 0 && cell.Y == 0);
+                if (current != null)
+                {
+                    CurrentCell = current;
+                }
+            }
+        }
+
+        public void Move(int x, int y)
+        {
+            foreach (var field in _fields)
+            {
+                var nextCell = field.Cells.Find(cell => cell.X == CurrentCell.X + x && cell.Y == CurrentCell.Y + y);
+                if (nextCell != null)
+                {
+                    CurrentCell = nextCell;
+                }
+            }
+        }
+
     }
 }

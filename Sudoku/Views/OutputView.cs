@@ -16,6 +16,7 @@ namespace Sudoku.Views
             Console.Write("|");
             foreach (var _field in board.Fields)
             {
+                // horizontal lines
                 if (rowCounter == board.Xboxes)
                 {
                     rowCounter = 0;
@@ -28,6 +29,7 @@ namespace Sudoku.Views
                 {
                     foreach (var cell in _field.Cells)
                     {
+                        // vertical lines
                         if (columnCounter == board.Yboxes)
                         {
                             columnCounter = 0;
@@ -35,33 +37,33 @@ namespace Sudoku.Views
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write("|");
                         }
-                        if (cell.X == 0 && cell.Y == 0)
-                        {
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            board.CurrentCell = cell;
-                            Console.Write(cell.Value);
-                        }
+                        // all cells except current cell
 
                         if (cell != board.CurrentCell)
                         {
+                            // cell with value
                             if (cell.Value != 0)
                             {
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(cell.Value);
                             }
+                            // empty cell
                             else
                             {
                                 Console.BackgroundColor = ConsoleColor.Black;
-
                                 Console.Write(" ");
                             }
                         }
-
+                        // currentcell
+                        else
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.Write(cell.Value);
+                        }
                         columnCounter++;
                     }
-
                     rowCounter++;
                     Console.WriteLine();
                 }
