@@ -53,7 +53,6 @@ namespace Sudoku.Views
                                 break;
                             }
                         }
-
                         if (cell != board.CurrentCell)
                         {
                             // cell with value
@@ -62,8 +61,7 @@ namespace Sudoku.Views
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(cell.Value);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.ForegroundColor = ConsoleColor.Black;
+
                             }
                             // empty cell
                             else
@@ -95,7 +93,6 @@ namespace Sudoku.Views
                             }
                         }
                     }
-
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
@@ -104,7 +101,6 @@ namespace Sudoku.Views
                     {
                         Console.Write(_char);
                     }
-
                     Console.WriteLine();
                 }
                 //else if (_field is Field)
