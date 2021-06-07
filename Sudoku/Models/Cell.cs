@@ -16,11 +16,15 @@ namespace Sudoku
             get { return _value; }
             set
             {
-                //if (_edit)
-                //{
-                _value = value;
-                //}
+                if (_edit)
+                {
+                    _value = value;
+                }
             }
+        }
+        public int Box
+        {
+            get { return _box; }
         }
 
         private List<int> _candidates;
@@ -29,19 +33,27 @@ namespace Sudoku
 
         private int _value;
 
-        public Cell(int x, int y)
+        private int _box;
+
+        //cells that user inputs
+        public Cell(int x, int y, int box)
         {
             X = x;
             Y = y;
             _edit = true;
+            _value = 0;
+            _box = box;
         }
 
-        public Cell(int x, int y, int value)
+        // cells that already exist
+        public Cell(int x, int y, int value, int box)
         {
             X = x;
             Y = y;
-            Value = value;
             _edit = false;
+            _value = value;
+            _box = box;
+
         }
     }
 }

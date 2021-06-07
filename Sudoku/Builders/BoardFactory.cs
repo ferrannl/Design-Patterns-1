@@ -36,12 +36,12 @@ namespace Sudoku
 
             if (fileName.Contains("jigsaw"))
             {
-                _parser = new JigsawParser();
+                _parser = new JigsawParser(lines, board);
             }
 
             else if (fileName.Contains("samurai"))
             {
-                _parser = new SamuraiParser();
+                _parser = new SamuraiParser(lines, board);
             }
 
             else if (m.Success)

@@ -11,6 +11,7 @@ namespace Sudoku
         private Board _board;
         private int _x;
         private int _y;
+
         public NormalParser(List<string> lines, string xy, Board board)
         {
             _x = int.Parse(xy.Split('x')[0]);
@@ -60,7 +61,17 @@ namespace Sudoku
 
             for (int i = 0; i < _lines[0].Length; i++)
             {
-                Cell cell = new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString()));
+                Cell cell;
+                if (int.Parse(_lines[0][i].ToString()) != 0)
+                {
+                    cell = new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString()), AssignSudokuBox(i, boxY, boxX));
+                    Console.WriteLine(cell.Value);
+                }
+                else
+                {
+                    cell = new Cell(indexX, indexY, AssignSudokuBox(i, boxY, boxX));
+                }
+
                 _columns[indexX].Cells.Add(cell);
                 _rows[indexY].Cells.Add(cell);
                 _boxes[AssignSudokuBox(i, boxY, boxX)].Cells.Add(cell);

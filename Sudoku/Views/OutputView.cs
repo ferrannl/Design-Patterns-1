@@ -13,31 +13,46 @@ namespace Sudoku.Views
             Console.Clear();
             int rowCounter = 0;
             int columnCounter = 0;
-            Console.Write("|");
+            int currentBox = 0;
             foreach (var _field in board.Fields)
             {
-                // horizontal lines
-                if (rowCounter == board.Xboxes)
-                {
-                    rowCounter = 0;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    string result = new string('-', _field.Cells.Count() + 3);
-                    Console.WriteLine(result);
-                }
                 if (_field is Row)
                 {
+                    List<string> lineChars = new List<string>();
+
                     foreach (var cell in _field.Cells)
                     {
-                        // vertical lines
-                        if (columnCounter == board.Yboxes)
+                        Cell downerCell = null;
+                        foreach (var boardField in board.Fields)
                         {
-                            columnCounter = 0;
-                            Console.BackgroundColor = ConsoleColor.Black;
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("|");
+                            downerCell = boardField.Cells.Find(c => c.X == cell.X && c.Y == cell.Y + 1);
+                            if (downerCell != null)
+                            {
+                                break;
+                            }
                         }
-                        // all cells except current cell
+                        if (downerCell != null)
+                        {
+                            if (cell.Box != downerCell.Box)
+                            // horizontal lines
+                            {
+                                lineChars.Add("_ ");
+                            }
+                            else
+                            {
+                                lineChars.Add("  ");
+                            }
+                        }
+                        // vertical lines
+                        Cell righterCell = null;
+                        foreach (var boardField in board.Fields)
+                        {
+                            righterCell = boardField.Cells.Find(c => c.X == cell.X + 1 && c.Y == cell.Y);
+                            if (righterCell != null)
+                            {
+                                break;
+                            }
+                        }
 
                         if (cell != board.CurrentCell)
                         {
@@ -47,12 +62,14 @@ namespace Sudoku.Views
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(cell.Value);
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                Console.ForegroundColor = ConsoleColor.Black;
                             }
                             // empty cell
                             else
                             {
                                 Console.BackgroundColor = ConsoleColor.Black;
-                                Console.Write(" ");
+                                Console.Write("0");
                             }
                         }
                         // currentcell
@@ -62,11 +79,38 @@ namespace Sudoku.Views
                             Console.ForegroundColor = ConsoleColor.Black;
                             Console.Write(cell.Value);
                         }
-                        columnCounter++;
+                        if (righterCell != null)
+                        {
+                            if (cell.Box != righterCell.Box)
+                            {
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write("|");
+                            }
+                            else
+                            {
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write(" ");
+                            }
+                        }
                     }
-                    rowCounter++;
+
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+
+                    foreach (var _char in lineChars)
+                    {
+                        Console.Write(_char);
+                    }
+
                     Console.WriteLine();
                 }
+                //else if (_field is Field)
+                //{
+
+                //}
             }
         }
 
