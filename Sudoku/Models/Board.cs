@@ -11,6 +11,7 @@ namespace Sudoku
         private int _yboxes;
         private Cell _currentCell;
         public int hoi = 0;
+        private IState _state;
         public Cell CurrentCell
         {
             get { return _currentCell; }
@@ -44,21 +45,23 @@ namespace Sudoku
             get { return _fields; }
             set
             {
-
+   
             }
         }
 
-        public IState IState
+        public IState State
         {
-            get => default;
+            get { return _state; }
             set
             {
+                _state = value;
             }
         }
 
         public Board()
         {
             _fields = new List<Field>();
+            _state = new DefinitiveState();
         }
 
         public bool Check()

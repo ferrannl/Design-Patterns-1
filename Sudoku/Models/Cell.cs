@@ -31,6 +31,29 @@ namespace Sudoku
                 }
             }
         }
+        public void AddCandidate(int helpCell)
+        {
+            bool found = false;
+            if (_value == 0)
+            {
+                foreach (var helpNumber in _candidates)
+                {
+
+                    if (helpNumber == helpCell)
+                    {
+                        _candidates.Remove(helpNumber);
+                        found = true;
+                        break;
+                    }
+
+                }
+                if (!found)
+                {
+                    _candidates.Add(helpCell);
+                }
+            }
+        
+        }
         public int Box
         {
             get { return _box; }

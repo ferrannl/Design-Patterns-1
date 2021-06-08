@@ -81,13 +81,22 @@ namespace Sudoku
                         _board = _solvedBoard;
                         break;
                 }
+
                 _output.DrawBoard(_board);
             }
             else
             {
                 if (value > 0 && value < _board.Fields[0].Cells.Count + 1)
                 {
-                    _board.CurrentCell.Value = value;
+                    if(_board.State.StateInfo() == "CandidateState")
+                    {
+                        _board.CurrentCell.AddCandidate(value);
+                    }
+                    else
+                    {
+                        _board.CurrentCell.Value = value;
+                    }
+                    
                     _output.DrawBoard(_board);
                 }
                 else

@@ -10,102 +10,110 @@ namespace Sudoku.Views
     {
         public void DrawBoard(Board board)
         {
-            Console.Clear();
-            int rowCounter = 0;
-            int columnCounter = 0;
-            int currentBox = 0;
-            foreach (var _field in board.Fields)
+            if (board.State.StateInfo() == "DefinitiveState")
             {
-                if (_field is Row)
+                Console.Clear();
+                int rowCounter = 0;
+                int columnCounter = 0;
+                int currentBox = 0;
+                foreach (var _field in board.Fields)
                 {
-                    List<string> lineChars = new List<string>();
 
-                    foreach (var cell in _field.Cells)
+                    if (_field is Row)
                     {
-                        Cell downerCell = null;
-                        foreach (var boardField in board.Fields)
+                        List<string> lineChars = new List<string>();
+
+                        foreach (var cell in _field.Cells)
                         {
-                            downerCell = boardField.Cells.Find(c => c.X == cell.X && c.Y == cell.Y + 1);
+                            Cell downerCell = null;
+                            foreach (var boardField in board.Fields)
+                            {
+                                downerCell = boardField.Cells.Find(c => c.X == cell.X && c.Y == cell.Y + 1);
+                                if (downerCell != null)
+                                {
+                                    break;
+                                }
+                            }
                             if (downerCell != null)
                             {
-                                break;
+                                if (cell.Box != downerCell.Box)
+                                // horizontal lines
+                                {
+                                    lineChars.Add("_ ");
+                                }
+                                else
+                                {
+                                    lineChars.Add("  ");
+                                }
                             }
-                        }
-                        if (downerCell != null)
-                        {
-                            if (cell.Box != downerCell.Box)
-                            // horizontal lines
+                            // vertical lines
+                            Cell righterCell = null;
+                            foreach (var boardField in board.Fields)
                             {
-                                lineChars.Add("_ ");
+                                righterCell = boardField.Cells.Find(c => c.X == cell.X + 1 && c.Y == cell.Y);
+                                if (righterCell != null)
+                                {
+                                    break;
+                                }
                             }
+                            if (cell != board.CurrentCell)
+                            {
+                                // cell with value
+                                if (cell.Value != 0)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write(cell.Value);
+
+                                }
+                                // empty cell
+                                else
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.Write(" ");
+                                }
+                            }
+                            // currentcell
                             else
                             {
-                                lineChars.Add("  ");
-                            }
-                        }
-                        // vertical lines
-                        Cell righterCell = null;
-                        foreach (var boardField in board.Fields)
-                        {
-                            righterCell = boardField.Cells.Find(c => c.X == cell.X + 1 && c.Y == cell.Y);
-                            if (righterCell != null)
-                            {
-                                break;
-                            }
-                        }
-                        if (cell != board.CurrentCell)
-                        {
-                            // cell with value
-                            if (cell.Value != 0)
-                            {
-                                Console.BackgroundColor = ConsoleColor.Yellow;
+                                Console.BackgroundColor = ConsoleColor.White;
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(cell.Value);
+                            }
+                            if (righterCell != null)
+                            {
+                                if (cell.Box != righterCell.Box)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("|");
+                                }
+                                else
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write(" ");
+                                }
+                            }
+                        }
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
 
-                            }
-                            // empty cell
-                            else
-                            {
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.Write(" ");
-                            }
-                        }
-                        // currentcell
-                        else
+                        foreach (var _char in lineChars)
                         {
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.Write(cell.Value);
+                            Console.Write(_char);
                         }
-                        if (righterCell != null)
-                        {
-                            if (cell.Box != righterCell.Box)
-                            {
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write("|");
-                            }
-                            else
-                            {
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.Write(" ");
-                            }
-                        }
+                        Console.WriteLine();
                     }
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine();
 
-                    foreach (var _char in lineChars)
-                    {
-                        Console.Write(_char);
-                    }
-                    Console.WriteLine();
                 }
+            }else if (board.State.StateInfo() == "CandidateState")
+            {
 
             }
         }
+      
 
         public void SelectPath()
         {
