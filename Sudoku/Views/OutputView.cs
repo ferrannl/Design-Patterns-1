@@ -67,7 +67,7 @@ namespace Sudoku.Views
                             else
                             {
                                 Console.BackgroundColor = ConsoleColor.Black;
-                                Console.Write("0");
+                                Console.Write(" ");
                             }
                         }
                         // currentcell
@@ -103,10 +103,7 @@ namespace Sudoku.Views
                     }
                     Console.WriteLine();
                 }
-                //else if (_field is Field)
-                //{
 
-                //}
             }
         }
 
@@ -127,7 +124,7 @@ namespace Sudoku.Views
 
         public void HelpCommands()
         {
-            Console.WriteLine("LEFT, UP, RIGHT, DOWN, ");
+            Console.WriteLine("LEFT, UP, RIGHT, DOWN, 1-9 , S to solve, C to check current digits ");
         }
     }
 }

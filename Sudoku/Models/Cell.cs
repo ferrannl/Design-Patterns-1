@@ -18,7 +18,16 @@ namespace Sudoku
             {
                 if (_edit)
                 {
-                    _value = value;
+                   if( _value == value)
+                    {
+                        _value = 0;
+                    }
+                    else
+                    {
+                        _value = value;
+                    }
+                  
+                    
                 }
             }
         }

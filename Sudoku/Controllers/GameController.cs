@@ -12,6 +12,7 @@ namespace Sudoku
         private readonly OutputView _output;
         private readonly BoardFactory _boardFactory;
         private Board _board;
+        private Board _solvedBoard;
         private bool _levelSelected;
         private bool _playing;
         public GameController()
@@ -30,7 +31,9 @@ namespace Sudoku
                 _output.SelectPath();
                 try
                 {
-                    _board = _boardFactory.Build(_input.getLine());
+                    String path = _input.getLine();
+                    _board = _boardFactory.Build(path);
+                    _solvedBoard = _boardFactory.Build(path);
                     if (_board != null)
                     {
                         _levelSelected = true;
@@ -47,6 +50,8 @@ namespace Sudoku
 
             }
             _board.SetStartCell();
+          _solvedBoard.SetStartCell();
+        _solvedBoard.Solve();
             _playing = true;
             this.play();
         }
@@ -71,12 +76,15 @@ namespace Sudoku
                     case ConsoleKey.DownArrow:
                         _board.Move(0, 1);
                         break;
+                    case ConsoleKey.S:
+                        _board = _solvedBoard;
+                        break;
                 }
                 _output.DrawBoard(_board);
             }
             else
             {
-                if (value > 0 && value < 10)
+                if (value > 0 && value < _board.Fields[0].Cells.Count + 1)
                 {
                     _board.CurrentCell.Value = value;
                     _output.DrawBoard(_board);

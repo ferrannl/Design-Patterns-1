@@ -65,7 +65,6 @@ namespace Sudoku
                 if (int.Parse(_lines[0][i].ToString()) != 0)
                 {
                     cell = new Cell(indexX, indexY, int.Parse(_lines[0][i].ToString()), AssignSudokuBox(i, boxY, boxX));
-                    Console.WriteLine(cell.Value);
                 }
                 else
                 {
