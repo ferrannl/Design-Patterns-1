@@ -10,7 +10,7 @@ namespace Sudoku
         private int _xboxes;
         private int _yboxes;
         private Cell _currentCell;
-
+        public int hoi = 0;
         public Cell CurrentCell
         {
             get { return _currentCell; }
@@ -95,6 +95,39 @@ namespace Sudoku
         }
         public bool Solve()
         {
+            Cell foundCell = this.findEmptyCell();
+            if (foundCell == null)
+            {
+                return true;
+
+            }
+            else
+            {
+
+                for (int i = 1; i < this.Fields[0].Cells.Count + 1; i++)
+                {
+                    
+                    if (IsValid(foundCell, i))
+                    {
+                        foundCell.Value = i;
+                        if (Solve())
+                        {
+                            return true;
+                        }
+                        foundCell.Value = 0;
+                    }
+                   
+                }
+                return false;
+
+            }
+            
+
+            
+
+        }
+        public Cell findEmptyCell()
+        {
             Cell cell = null;
             foreach (var field in _fields)
             {
@@ -117,30 +150,9 @@ namespace Sudoku
                     }
                 }
             }
-            if (cell != null)
-            {
-                for (int i = 1; i < this.Fields[0].Cells.Count + 1; i++)
-                {
-                    cell.Value = i;
-                    if (IsValid(cell))
-                    {
-                        if (Solve())
-                        {
-                            return true;
-                        }
-                    }
-
-                }
-                return false;
-            }
-            else {
-                return true;
-            }
-
-            
-
+            return cell;
         }
-        public bool IsValid(Cell cell)
+        public bool IsValid(Cell cell,int value)
         {
             Field row = null;
             Field column = null;
@@ -167,7 +179,7 @@ namespace Sudoku
             foreach (var item in row.Cells)
             {
 
-                if((cell.Value == item.Value) && (cell != item))
+                if((value == item.Value) && (cell != item))
                 {
                     unique = false;
                     break;
@@ -178,7 +190,7 @@ namespace Sudoku
                 foreach (var item in column.Cells)
                 {
 
-                    if ((cell.Value == item.Value) && (cell != item))
+                    if ((value == item.Value) && (cell != item))
                     {
                         unique = false;
                         break;
@@ -189,7 +201,7 @@ namespace Sudoku
             {
                 foreach (var item in box.Cells)
                 {
-                    if ((cell.Value == item.Value) && (cell != item))
+                    if ((value == item.Value) && (cell != item))
                     {
                         unique = false;
                         break;
