@@ -122,12 +122,38 @@ namespace Sudoku
 
         private void play()
         {
+            chooseGameMode();
             _output.DrawBoard(_board);
             _output.HelpCommands();
             while (_playing)
             {
                 InputCommandHandler(_input.GetKey());
             }
+        }
+
+        private void chooseGameMode()
+        {
+            bool modeChosen = false;
+            while (!modeChosen)
+            {
+                _output.SelectMode();
+               ConsoleKeyInfo key = _input.GetKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.D0:
+                        modeChosen = true;
+                        break;
+                    case ConsoleKey.D1:
+                        _board.FillCandidates();
+                        modeChosen = true;
+
+                        break;
+                    default:
+                        _output.SelectMode();
+                        break;
+                }
+            }
+            
         }
     }
 }

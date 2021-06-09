@@ -266,6 +266,11 @@ namespace Sudoku.Views
         {
             Console.WriteLine("Type in the path to your puzzle:");
         }
+        public void SelectMode()
+        {
+            Console.WriteLine("Wich mode do you want:");
+            Console.WriteLine("press 0 for the no help mode or press 1 for the help mode.");
+        }
         public void RetrySelection()
         {
             Console.WriteLine("Please enter a valid path to a puzzle file.");

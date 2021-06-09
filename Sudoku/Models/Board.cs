@@ -115,7 +115,32 @@ namespace Sudoku
             }
             return false;
         }
+        public void FillCandidates()
+        {
+            foreach (var field in _fields)
+            {
+                if (field is Row)
+                {
+                    foreach (var cell in field.Cells)
+                    {
+                        if (cell.Value == 0)
+                        {
+                            for (int i = 1; i < this.Fields[0].Cells.Count + 1; i++)
+                            {
+                                if (IsValid(cell, i))
+                                {
 
+
+                                    cell.Candidates.Add(i);
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
         public Cell FindEmptyCell()
         {
             Cell cell = null;
