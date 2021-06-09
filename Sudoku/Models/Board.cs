@@ -8,6 +8,8 @@ namespace Sudoku
         private int _yboxes;
         private Cell _currentCell;
         private IState _state;
+        private IState _canidateState;
+        private IState _definitiveState;
 
         private List<Field> _fields;
 
@@ -20,23 +22,7 @@ namespace Sudoku
             }
         }
 
-        public int Xboxes
-        {
-            get { return _xboxes; }
-            set
-            {
-                _xboxes = value;
-            }
-        }
-
-        public int Yboxes
-        {
-            get { return _yboxes; }
-            set
-            {
-                _yboxes = value;
-            }
-        }
+        
 
         public List<Field> Fields
         {
@@ -58,7 +44,22 @@ namespace Sudoku
         public Board()
         {
             _fields = new List<Field>();
-            _state = new DefinitiveState();
+            _definitiveState = new DefinitiveState();
+            _canidateState = new CandidateState();
+            _state = _definitiveState;
+            
+        }
+        public void changeState()
+        {
+            if (State.StateInfo() == "CandidateState")
+            {
+                State = _definitiveState;
+
+            }
+            else
+            {
+              State = _canidateState;
+            }
         }
 
         public bool Check()

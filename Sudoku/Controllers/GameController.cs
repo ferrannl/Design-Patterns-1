@@ -13,6 +13,7 @@ namespace Sudoku
         private bool _levelSelected;
         private bool _playing;
 
+
         public GameController()
         {
             _input = new InputView();
@@ -20,6 +21,7 @@ namespace Sudoku
             _boardFactory = new BoardFactory(new FileReader());
             _levelSelected = false;
             _playing = false;
+
             start();
         }
 
@@ -81,10 +83,19 @@ namespace Sudoku
 
                     case ConsoleKey.S:
                         _board = _solvedBoard;
+                        _playing = false;
+                        _output.DrawBoard(_board);
+                        _output.AfterSolve();
+                        _input.GetKey();
+                        break;
+                    case ConsoleKey.E:
+                        _board.changeState();
+                        _solvedBoard.changeState();
                         break;
                 }
 
                 _output.DrawBoard(_board);
+                _output.HelpCommands();
             }
             else
             {
@@ -112,6 +123,7 @@ namespace Sudoku
         private void play()
         {
             _output.DrawBoard(_board);
+            _output.HelpCommands();
             while (_playing)
             {
                 InputCommandHandler(_input.GetKey());

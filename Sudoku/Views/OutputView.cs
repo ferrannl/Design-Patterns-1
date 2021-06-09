@@ -105,6 +105,160 @@ namespace Sudoku.Views
             }
             else if (board.State.StateInfo() == "CandidateState")
             {
+                Console.Clear();
+                int rowCounter = 0;
+                int columnCounter = 0;
+                int currentBox = 0;
+                foreach (var _field in board.Fields)
+                {
+                    if (_field is Row)
+                    {
+                        List<string> lineChars = new List<string>();
+
+                        foreach (var cell in _field.Cells)
+                        {
+                            Cell downerCell = null;
+                            foreach (var boardField in board.Fields)
+                            {
+                                downerCell = boardField.Cells.Find(c => c.X == cell.X && c.Y == cell.Y + 1);
+                                if (downerCell != null)
+                                {
+                                    break;
+                                }
+                            }
+                            if (downerCell != null)
+                            {
+                                if (cell.Box != downerCell.Box)
+                                // horizontal lines
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        lineChars.Add("_ ");
+                                    }
+                                        
+                                   
+                                    
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        lineChars.Add("  ");
+
+                                    }
+                                }
+                            }
+                            // vertical lines
+                            Cell righterCell = null;
+                            foreach (var boardField in board.Fields)
+                            {
+                                righterCell = boardField.Cells.Find(c => c.X == cell.X + 1 && c.Y == cell.Y);
+                                if (righterCell != null)
+                                {
+                                    break;
+                                }
+                            }
+                            if (cell != board.CurrentCell)
+                            {
+                                // cell with value
+                                if (cell.Value != 0)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    for (int i = 1; i < 10; i++)
+                                    {
+                                        if(cell.Value == i)
+                                        {
+                                            Console.Write(cell.Value);
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+                                    }
+                                   
+                                }
+                                // empty cell
+                                else
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    for (int i = 1; i < 10; i++)
+                                    {
+                                        bool found = false;
+                                        foreach (var candidate in cell.Candidates)
+                                        {
+                                            if(i == candidate)
+                                            {
+                                                found = true;
+                                            }
+
+                                        }
+                                        if (found)
+                                        {
+                                            Console.Write(i);
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            }
+                            // currentcell
+                            else
+                            {
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                for (int i = 1; i < 10; i++)
+                                {
+                                    bool found = false;
+                                    foreach (var candidate in cell.Candidates)
+                                    {
+                                        if (i == candidate)
+                                        {
+                                            found = true;
+                                        }
+
+                                    }
+                                    if (found)
+                                    {
+                                        Console.Write(i);
+                                    }
+                                    else
+                                    {
+                                        Console.Write(" ");
+                                    }
+                                }
+                            }
+                            if (righterCell != null)
+                            {
+                                if (cell.Box != righterCell.Box)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write("|");
+                                }
+                                else
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.Write(" ");
+                                }
+                            }
+                        }
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
+
+                        foreach (var _char in lineChars)
+                        {
+                            Console.Write(_char);
+                        }
+                        Console.WriteLine();
+                    }
+                }
             }
         }
 
@@ -122,7 +276,13 @@ namespace Sudoku.Views
         }
         public void HelpCommands()
         {
-            Console.WriteLine("LEFT, UP, RIGHT, DOWN, 1-9 , S to solve, C to check current digits ");
+            Console.WriteLine("LEFT, UP, RIGHT, DOWN To move the cursor, 1-9 to set a value ");
+            Console.WriteLine("S to solve, C to check current digits, E to switch between the help numbers and definitive numbers");
+        }
+        public void AfterSolve()
+        {
+            Console.WriteLine("Thank you for playing press any key to quit the game");
+
         }
     }
 }

@@ -45,9 +45,6 @@ namespace Sudoku
                     break;
             }
 
-            _board.Xboxes = boxX;
-            _board.Yboxes = boxY;
-
             int indexX = 0;
             int indexY = 0;
 

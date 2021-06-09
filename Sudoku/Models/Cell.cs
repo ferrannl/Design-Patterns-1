@@ -12,7 +12,7 @@ namespace Sudoku
         private int _value;
 
         private int _box;
-        public List<int> Candidates { get; }
+        public List<int> Candidates { get { return _candidates; } }
         public int X { get; }
         public int Y { get; }
 
@@ -48,6 +48,7 @@ namespace Sudoku
             _edit = true;
             _value = 0;
             _box = box;
+            _candidates = new List<int>();
         }
 
         // cells that already exist
@@ -58,6 +59,7 @@ namespace Sudoku
             _edit = false;
             _value = value;
             _box = box;
+            _candidates = new List<int>();
         }
 
         public void AddCandidate(int helpCell)
