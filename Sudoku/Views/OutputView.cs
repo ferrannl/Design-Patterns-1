@@ -131,9 +131,9 @@ namespace Sudoku.Views
                                 if (cell.Box != downerCell.Box)
                                 // horizontal lines
                                 {
-                                    for (int i = 0; i < 5; i++)
+                                    for (int i = 0; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
-                                        lineChars.Add("_ ");
+                                        lineChars.Add("_");
                                     }
                                         
                                    
@@ -141,9 +141,9 @@ namespace Sudoku.Views
                                 }
                                 else
                                 {
-                                    for (int i = 0; i < 5; i++)
+                                    for (int i = 0; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
-                                        lineChars.Add("  ");
+                                        lineChars.Add(" ");
 
                                     }
                                 }
@@ -165,7 +165,7 @@ namespace Sudoku.Views
                                 {
                                     Console.BackgroundColor = ConsoleColor.Yellow;
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    for (int i = 1; i < 10; i++)
+                                    for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
                                         if(cell.Value == i)
                                         {
@@ -182,7 +182,7 @@ namespace Sudoku.Views
                                 else
                                 {
                                     Console.BackgroundColor = ConsoleColor.Black;
-                                    for (int i = 1; i < 10; i++)
+                                    for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
                                         bool found = false;
                                         foreach (var candidate in cell.Candidates)
@@ -211,7 +211,7 @@ namespace Sudoku.Views
                             {
                                 Console.BackgroundColor = ConsoleColor.White;
                                 Console.ForegroundColor = ConsoleColor.Black;
-                                for (int i = 1; i < 10; i++)
+                                for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
                                 {
                                     bool found = false;
                                     foreach (var candidate in cell.Candidates)
@@ -251,7 +251,11 @@ namespace Sudoku.Views
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
-
+                        if(lineChars.Count != 0)
+                        {
+                            lineChars.RemoveAt(lineChars.Count - 1);
+                        }
+                        
                         foreach (var _char in lineChars)
                         {
                             Console.Write(_char);

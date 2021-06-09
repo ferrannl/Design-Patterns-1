@@ -43,6 +43,7 @@ namespace Sudoku
                     boxX = 3;
                     boxY = 3;
                     break;
+
             }
 
             int indexX = 0;
