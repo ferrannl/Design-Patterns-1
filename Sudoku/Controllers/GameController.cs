@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sudoku.Views;
+﻿using Sudoku.Views;
+using System;
 
 namespace Sudoku
 {
@@ -15,6 +12,7 @@ namespace Sudoku
         private Board _solvedBoard;
         private bool _levelSelected;
         private bool _playing;
+
         public GameController()
         {
             _input = new InputView();
@@ -24,6 +22,7 @@ namespace Sudoku
             _playing = false;
             start();
         }
+
         private void start()
         {
             while (!_levelSelected)
@@ -47,12 +46,11 @@ namespace Sudoku
                 {
                     _output.RetrySelection();
                 }
-
             }
             _board.SetStartCell();
-          _solvedBoard.SetStartCell();
+            _solvedBoard.SetStartCell();
 
-                    _solvedBoard.Solve();
+            _solvedBoard.Solve();
             _playing = true;
             this.play();
         }
@@ -68,15 +66,19 @@ namespace Sudoku
                     case ConsoleKey.LeftArrow:
                         _board.Move(-1, 0);
                         break;
+
                     case ConsoleKey.UpArrow:
                         _board.Move(0, -1);
                         break;
+
                     case ConsoleKey.RightArrow:
                         _board.Move(1, 0);
                         break;
+
                     case ConsoleKey.DownArrow:
                         _board.Move(0, 1);
                         break;
+
                     case ConsoleKey.S:
                         _board = _solvedBoard;
                         break;
@@ -88,7 +90,7 @@ namespace Sudoku
             {
                 if (value > 0 && value < _board.Fields[0].Cells.Count + 1)
                 {
-                    if(_board.State.StateInfo() == "CandidateState")
+                    if (_board.State.StateInfo() == "CandidateState")
                     {
                         _board.CurrentCell.AddCandidate(value);
                     }
@@ -96,7 +98,7 @@ namespace Sudoku
                     {
                         _board.CurrentCell.Value = value;
                     }
-                    
+
                     _output.DrawBoard(_board);
                 }
                 else
@@ -113,34 +115,6 @@ namespace Sudoku
             while (_playing)
             {
                 InputCommandHandler(_input.GetKey());
-
-            }
-
-        }
-
-        private FileReader _fileReader;
-
-        public BoardFactory BoardFactory
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal Views.OutputView OutputView
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal Views.InputView InputView
-        {
-            get => default;
-            set
-            {
             }
         }
     }

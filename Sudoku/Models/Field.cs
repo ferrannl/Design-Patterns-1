@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Sudoku
 {
@@ -9,6 +6,7 @@ namespace Sudoku
     {
         private List<Cell> _cells;
         private List<Field> _fields;
+
         public Field()
         {
             _cells = new List<Cell>();

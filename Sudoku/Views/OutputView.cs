@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku.Views
 {
@@ -18,7 +15,6 @@ namespace Sudoku.Views
                 int currentBox = 0;
                 foreach (var _field in board.Fields)
                 {
-
                     if (_field is Row)
                     {
                         List<string> lineChars = new List<string>();
@@ -64,7 +60,6 @@ namespace Sudoku.Views
                                     Console.BackgroundColor = ConsoleColor.Yellow;
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write(cell.Value);
-
                                 }
                                 // empty cell
                                 else
@@ -106,30 +101,25 @@ namespace Sudoku.Views
                         }
                         Console.WriteLine();
                     }
-
                 }
-            }else if (board.State.StateInfo() == "CandidateState")
+            }
+            else if (board.State.StateInfo() == "CandidateState")
             {
-
             }
         }
-      
 
         public void SelectPath()
         {
             Console.WriteLine("Type in the path to your puzzle:");
         }
-
         public void RetrySelection()
         {
             Console.WriteLine("Please enter a valid path to a puzzle file.");
         }
-
         public void BuildFailed()
         {
             Console.WriteLine("Unable to build board, file contents are incorrect.");
         }
-
         public void HelpCommands()
         {
             Console.WriteLine("LEFT, UP, RIGHT, DOWN, 1-9 , S to solve, C to check current digits ");

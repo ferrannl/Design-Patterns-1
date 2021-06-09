@@ -1,9 +1,6 @@
 ﻿using Sudoku.Readers;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Sudoku
@@ -12,19 +9,11 @@ namespace Sudoku
     {
         private IReader _reader;
         private IParser _parser;
+
         public BoardFactory(IReader reader)
         {
             _reader = reader;
-
         }
-        public Board Board
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
 
         public Board Build(string filePath)
         {
@@ -38,12 +27,10 @@ namespace Sudoku
             {
                 _parser = new JigsawParser(lines, board);
             }
-
             else if (fileName.Contains("samurai"))
             {
                 _parser = new SamuraiParser(lines, board);
             }
-
             else if (m.Success)
             {
                 _parser = new NormalParser(lines, m.ToString(), board);
@@ -53,7 +40,6 @@ namespace Sudoku
             {
                 board = _parser.GenerateBoard();
                 return board;
-
             }
             return null;
         }

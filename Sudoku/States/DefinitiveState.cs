@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Sudoku
+﻿namespace Sudoku
 {
     public class DefinitiveState : IState
     {
@@ -11,7 +6,6 @@ namespace Sudoku
         public DefinitiveState()
         {
             _state = "DefinitiveState";
-
         }
         public string StateInfo()
         {

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sudoku
+﻿namespace Sudoku
 {
-    class Game
+    internal class Game
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             GameController gameController = new GameController();
         }
-
     }
 }

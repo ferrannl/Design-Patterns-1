@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Sudoku
 {
@@ -64,7 +62,6 @@ namespace Sudoku
                 {
                     cell = new Cell(indexX, indexY, boxIndex);
                 }
-
 
                 _columns[indexX].Cells.Add(cell);
                 _rows[indexY].Cells.Add(cell);

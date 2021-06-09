@@ -1,64 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Sudoku
 {
     //component leaf
     public class Cell
     {
-        public List<int> Candidates { get; }
-        public int X { get; }
-        public int Y { get; }
-        public int Value
-        {
-            get { return _value; }
-            set
-            {
-                if (_edit)
-                {
-                   if( _value == value)
-                    {
-                        _value = 0;
-                    }
-                    else
-                    {
-                        _value = value;
-                    }
-                  
-                    
-                }
-            }
-        }
-        public void AddCandidate(int helpCell)
-        {
-            bool found = false;
-            if (_value == 0)
-            {
-                foreach (var helpNumber in _candidates)
-                {
-
-                    if (helpNumber == helpCell)
-                    {
-                        _candidates.Remove(helpNumber);
-                        found = true;
-                        break;
-                    }
-
-                }
-                if (!found)
-                {
-                    _candidates.Add(helpCell);
-                }
-            }
-        
-        }
-        public int Box
-        {
-            get { return _box; }
-        }
-
         private List<int> _candidates;
 
         private bool _edit;
@@ -66,6 +12,33 @@ namespace Sudoku
         private int _value;
 
         private int _box;
+        public List<int> Candidates { get; }
+        public int X { get; }
+        public int Y { get; }
+
+        public int Value
+        {
+            get { return _value; }
+            set
+            {
+                if (_edit)
+                {
+                    if (_value == value)
+                    {
+                        _value = 0;
+                    }
+                    else
+                    {
+                        _value = value;
+                    }
+                }
+            }
+        }
+
+        public int Box
+        {
+            get { return _box; }
+        }
 
         //cells that user inputs
         public Cell(int x, int y, int box)
@@ -85,7 +58,27 @@ namespace Sudoku
             _edit = false;
             _value = value;
             _box = box;
+        }
 
+        public void AddCandidate(int helpCell)
+        {
+            bool found = false;
+            if (_value == 0)
+            {
+                foreach (var helpNumber in _candidates)
+                {
+                    if (helpNumber == helpCell)
+                    {
+                        _candidates.Remove(helpNumber);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    _candidates.Add(helpCell);
+                }
+            }
         }
     }
 }

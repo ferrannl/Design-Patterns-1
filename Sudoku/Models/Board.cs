@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Sudoku
 {
@@ -10,8 +7,10 @@ namespace Sudoku
         private int _xboxes;
         private int _yboxes;
         private Cell _currentCell;
-        public int hoi = 0;
         private IState _state;
+
+        private List<Field> _fields;
+
         public Cell CurrentCell
         {
             get { return _currentCell; }
@@ -20,6 +19,7 @@ namespace Sudoku
                 _currentCell = value;
             }
         }
+
         public int Xboxes
         {
             get { return _xboxes; }
@@ -38,14 +38,11 @@ namespace Sudoku
             }
         }
 
-        private List<Field> _fields;
-
         public List<Field> Fields
         {
             get { return _fields; }
             set
             {
-   
             }
         }
 
@@ -81,7 +78,6 @@ namespace Sudoku
                     break;
                 }
             }
-
         }
 
         public void Move(int x, int y)
@@ -96,40 +92,30 @@ namespace Sudoku
                 }
             }
         }
+
         public bool Solve()
         {
-            Cell foundCell = this.findEmptyCell();
+            Cell foundCell = this.FindEmptyCell();
             if (foundCell == null)
             {
                 return true;
-
             }
-            else
+            for (int i = 1; i < this.Fields[0].Cells.Count + 1; i++)
             {
-
-                for (int i = 1; i < this.Fields[0].Cells.Count + 1; i++)
+                if (IsValid(foundCell, i))
                 {
-                    
-                    if (IsValid(foundCell, i))
+                    foundCell.Value = i;
+                    if (Solve())
                     {
-                        foundCell.Value = i;
-                        if (Solve())
-                        {
-                            return true;
-                        }
-                        foundCell.Value = 0;
+                        return true;
                     }
-                   
+                    foundCell.Value = 0;
                 }
-                return false;
-
             }
-            
-
-            
-
+            return false;
         }
-        public Cell findEmptyCell()
+
+        public Cell FindEmptyCell()
         {
             Cell cell = null;
             foreach (var field in _fields)
@@ -145,7 +131,6 @@ namespace Sudoku
                             found = true;
                             break;
                         }
-
                     }
                     if (found)
                     {
@@ -155,7 +140,8 @@ namespace Sudoku
             }
             return cell;
         }
-        public bool IsValid(Cell cell,int value)
+
+        public bool IsValid(Cell cell, int value)
         {
             Field row = null;
             Field column = null;
@@ -166,13 +152,15 @@ namespace Sudoku
                 if (foundCell != null)
                 {
                     foundCell = null;
-                    if(field is Row)
+                    if (field is Row)
                     {
                         row = field;
-                    }else if(field is Column)
+                    }
+                    else if (field is Column)
                     {
                         column = field;
-                    }else if(field is Box)
+                    }
+                    else if (field is Box)
                     {
                         box = field;
                     }
@@ -181,8 +169,7 @@ namespace Sudoku
             bool unique = true;
             foreach (var item in row.Cells)
             {
-
-                if((value == item.Value) && (cell != item))
+                if ((value == item.Value) && (cell != item))
                 {
                     unique = false;
                     break;
@@ -192,7 +179,6 @@ namespace Sudoku
             {
                 foreach (var item in column.Cells)
                 {
-
                     if ((value == item.Value) && (cell != item))
                     {
                         unique = false;
@@ -213,6 +199,5 @@ namespace Sudoku
             }
             return unique;
         }
-
     }
 }

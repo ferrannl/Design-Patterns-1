@@ -46,12 +46,10 @@
     <None Include="Puzzles\puzzle3.4x4" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color.cs" />
     <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Direction.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Models\Board.cs" />
-    <Compile Include="Builders\BoardFactory.cs" />
+    <Compile Include="Factories\BoardFactory.cs" />
     <Compile Include="Models\Box.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Column.cs" />
@@ -69,10 +67,7 @@
     <Compile Include="Views\InputView.cs" />
     <Compile Include="Views\OutputView.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Puzzles\puzzle2.6x6.txt" />
     <Content Include="Puzzles\puzzle2.9x9.txt" />

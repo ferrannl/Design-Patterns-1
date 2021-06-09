@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Sudoku
 {
@@ -36,10 +33,12 @@ namespace Sudoku
                     boxX = 2;
                     boxY = 2;
                     break;
+
                 case 6:
                     boxX = 3;
                     boxY = 2;
                     break;
+
                 case 9:
                     boxX = 3;
                     boxY = 3;
@@ -92,6 +91,7 @@ namespace Sudoku
             _board.Fields.AddRange(_fields);
             return _board;
         }
+
         public int AssignSudokuBox(int rowIndex, int m, int n)
         {
             // index, if devided to pieces n x 1
