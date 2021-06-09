@@ -69,11 +69,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Puzzles\puzzle2.6x6.txt" />
     <Content Include="Puzzles\puzzle2.9x9.txt" />
     <Content Include="Puzzles\puzzle2.jigsaw.txt" />
     <Content Include="Puzzles\puzzle2.samurai.txt" />
-    <Content Include="Puzzles\puzzle3.6x6.txt" />
     <Content Include="Puzzles\puzzle3.9x9.txt" />
     <Content Include="Puzzles\puzzle3.jigsaw.txt" />
     <Content Include="Puzzles\puzzle3.samurai.txt" />
