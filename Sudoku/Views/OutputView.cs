@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sudoku.Enums;
 
 namespace Sudoku.Views
 {
@@ -57,13 +58,16 @@ namespace Sudoku.Views
                                 // cell with value
                                 if (cell.Value != 0)
                                 {
-                                    Cell.CheckedStates state = Cell.CheckedStates.Correct;
-                                    if (state == Cell.CheckedStates.Correct)
+                                    if (cell.State == CheckedState.Incorrect)
+                                    {
+                                        Console.BackgroundColor = ConsoleColor.Red;
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                    }
+                                    else
                                     {
                                         Console.BackgroundColor = ConsoleColor.Yellow;
                                         Console.ForegroundColor = ConsoleColor.Black;
                                     }
-
                                     Console.Write(cell.Value);
                                 }
                                 // empty cell
@@ -140,16 +144,12 @@ namespace Sudoku.Views
                                     {
                                         lineChars.Add("_");
                                     }
-                                        
-                                   
-                                    
                                 }
                                 else
                                 {
                                     for (int i = 0; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
                                         lineChars.Add(" ");
-
                                     }
                                 }
                             }
@@ -168,11 +168,19 @@ namespace Sudoku.Views
                                 // cell with value
                                 if (cell.Value != 0)
                                 {
-                                    Console.BackgroundColor = ConsoleColor.Yellow;
-                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    if (cell.State == CheckedState.Incorrect)
+                                    {
+                                        Console.BackgroundColor = ConsoleColor.Red;
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                    }
+                                    else
+                                    {
+                                        Console.BackgroundColor = ConsoleColor.Yellow;
+                                        Console.ForegroundColor = ConsoleColor.Black;
+                                    }
                                     for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
-                                        if(cell.Value == i)
+                                        if (cell.Value == i)
                                         {
                                             Console.Write(cell.Value);
                                         }
@@ -181,7 +189,6 @@ namespace Sudoku.Views
                                             Console.Write(" ");
                                         }
                                     }
-                                   
                                 }
                                 // empty cell
                                 else
@@ -192,11 +199,10 @@ namespace Sudoku.Views
                                         bool found = false;
                                         foreach (var candidate in cell.Candidates)
                                         {
-                                            if(i == candidate)
+                                            if (i == candidate)
                                             {
                                                 found = true;
                                             }
-
                                         }
                                         if (found)
                                         {
@@ -207,8 +213,6 @@ namespace Sudoku.Views
                                             Console.Write(" ");
                                         }
                                     }
-                                    
-                                    
                                 }
                             }
                             // currentcell
@@ -225,7 +229,6 @@ namespace Sudoku.Views
                                         {
                                             found = true;
                                         }
-
                                     }
                                     if (found)
                                     {
@@ -256,11 +259,11 @@ namespace Sudoku.Views
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
-                        if(lineChars.Count != 0)
+                        if (lineChars.Count != 0)
                         {
                             lineChars.RemoveAt(lineChars.Count - 1);
                         }
-                        
+
                         foreach (var _char in lineChars)
                         {
                             Console.Write(_char);
@@ -275,28 +278,32 @@ namespace Sudoku.Views
         {
             Console.WriteLine("Type in the path to your puzzle:");
         }
+
         public void SelectMode()
         {
             Console.WriteLine("Wich mode do you want:");
             Console.WriteLine("press 0 for the no help mode or press 1 for the help mode.");
         }
+
         public void RetrySelection()
         {
             Console.WriteLine("Please enter a valid path to a puzzle file.");
         }
+
         public void BuildFailed()
         {
             Console.WriteLine("Unable to build board, file contents are incorrect.");
         }
+
         public void HelpCommands()
         {
             Console.WriteLine("LEFT, UP, RIGHT, DOWN To move the cursor, 1-9 to set a value ");
             Console.WriteLine("S to solve, C to check current digits, E to switch between the help numbers and definitive numbers");
         }
+
         public void AfterSolve()
         {
             Console.WriteLine("Thank you for playing press any key to quit the game");
-
         }
     }
 }

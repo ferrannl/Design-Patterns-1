@@ -13,7 +13,6 @@ namespace Sudoku
         private bool _levelSelected;
         private bool _playing;
 
-
         public GameController()
         {
             _input = new InputView();
@@ -88,12 +87,15 @@ namespace Sudoku
                         _output.AfterSolve();
                         _input.GetKey();
                         break;
+
                     case ConsoleKey.E:
                         _board.changeState();
                         _solvedBoard.changeState();
                         break;
+                    case ConsoleKey.C:
+                        _board.CheckCells(_solvedBoard);
+                        break;
                 }
-
                 _output.DrawBoard(_board);
                 _output.HelpCommands();
             }
@@ -109,7 +111,6 @@ namespace Sudoku
                     {
                         _board.CurrentCell.Value = value;
                     }
-
                     _output.DrawBoard(_board);
                 }
                 else
@@ -137,23 +138,24 @@ namespace Sudoku
             while (!modeChosen)
             {
                 _output.SelectMode();
-               ConsoleKeyInfo key = _input.GetKey();
+                ConsoleKeyInfo key = _input.GetKey();
                 switch (key.Key)
                 {
                     case ConsoleKey.D0:
                         modeChosen = true;
                         break;
+
                     case ConsoleKey.D1:
                         _board.FillCandidates();
                         modeChosen = true;
 
                         break;
+
                     default:
                         _output.SelectMode();
                         break;
                 }
             }
-            
         }
     }
 }

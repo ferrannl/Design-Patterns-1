@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sudoku.Enums;
 
 namespace Sudoku
 {
@@ -21,8 +22,6 @@ namespace Sudoku
                 _currentCell = value;
             }
         }
-
-        
 
         public List<Field> Fields
         {
@@ -47,18 +46,17 @@ namespace Sudoku
             _definitiveState = new DefinitiveState();
             _canidateState = new CandidateState();
             _state = _definitiveState;
-            
         }
+
         public void changeState()
         {
             if (State.StateInfo() == "CandidateState")
             {
                 State = _definitiveState;
-
             }
             else
             {
-              State = _canidateState;
+                State = _canidateState;
             }
         }
 
@@ -115,6 +113,7 @@ namespace Sudoku
             }
             return false;
         }
+
         public void FillCandidates()
         {
             foreach (var field in _fields)
@@ -129,18 +128,15 @@ namespace Sudoku
                             {
                                 if (IsValid(cell, i))
                                 {
-
-
                                     cell.Candidates.Add(i);
-
                                 }
-
                             }
                         }
                     }
                 }
             }
         }
+
         public Cell FindEmptyCell()
         {
             Cell cell = null;
@@ -226,10 +222,8 @@ namespace Sudoku
             return unique;
         }
 
-        public void CheckCells()
+        public void CheckCells(Board solvedBoard)
         {
-            Board solvedBoard = new Board();
-            solvedBoard.Solve();
             int fieldIndex = 0;
             foreach (Field field in this.Fields)
             {
@@ -238,12 +232,21 @@ namespace Sudoku
                     int cellIndex = 0;
                     foreach (Cell cell in field.Cells)
                     {
-                        if (cell.Edit)
+                        if ((cell.Edit) && (cell.Value != 0))
                         {
-
+                            if (cell.Value == solvedBoard.Fields[fieldIndex].Cells[cellIndex].Value)
+                            {
+                                cell.State = CheckedState.Correct;
+                            }
+                            else
+                            {
+                                cell.State = CheckedState.Incorrect;
+                            }
                         }
+                        cellIndex++;
                     }
                 }
+                fieldIndex++;
             }
         }
     }

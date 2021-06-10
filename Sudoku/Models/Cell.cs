@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Sudoku.Enums;
+﻿using Sudoku.Enums;
+using System.Collections.Generic;
 
 namespace Sudoku
 {
@@ -32,7 +32,6 @@ namespace Sudoku
             get { return _edit; }
         }
 
-
         public int Value
         {
             get { return _value; }
@@ -40,6 +39,7 @@ namespace Sudoku
             {
                 if (_edit)
                 {
+                    _state = CheckedState.Unchecked;
                     if (_value == value)
                     {
                         _value = 0;
@@ -66,6 +66,8 @@ namespace Sudoku
             _value = 0;
             _box = box;
             _candidates = new List<int>();
+            _state = CheckedState.Unchecked;
+
         }
 
         // cells that already exist
@@ -77,6 +79,7 @@ namespace Sudoku
             _value = value;
             _box = box;
             _candidates = new List<int>();
+            _state = CheckedState.Correct;
         }
 
         public void AddCandidate(int helpCell)
