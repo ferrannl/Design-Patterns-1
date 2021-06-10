@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sudoku.Enums;
 
 namespace Sudoku
 {
@@ -13,8 +14,24 @@ namespace Sudoku
 
         private int _box;
         public List<int> Candidates { get { return _candidates; } }
+        private CheckedState _state;
         public int X { get; }
         public int Y { get; }
+
+        public CheckedState State
+        {
+            get { return _state; }
+            set
+            {
+                _state = value;
+            }
+        }
+
+        public bool Edit
+        {
+            get { return _edit; }
+        }
+
 
         public int Value
         {

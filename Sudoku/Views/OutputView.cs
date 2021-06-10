@@ -57,8 +57,13 @@ namespace Sudoku.Views
                                 // cell with value
                                 if (cell.Value != 0)
                                 {
-                                    Console.BackgroundColor = ConsoleColor.Yellow;
-                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Cell.CheckedStates state = Cell.CheckedStates.Correct;
+                                    if (state == Cell.CheckedStates.Correct)
+                                    {
+                                        Console.BackgroundColor = ConsoleColor.Yellow;
+                                        Console.ForegroundColor = ConsoleColor.Black;
+                                    }
+
                                     Console.Write(cell.Value);
                                 }
                                 // empty cell

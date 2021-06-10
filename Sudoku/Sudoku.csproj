@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Enums\CheckedState.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Factories\BoardFactory.cs" />

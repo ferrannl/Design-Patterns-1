@@ -18,13 +18,10 @@ namespace Sudoku
 
         public Board GenerateBoard()
         {
-
-
             List<Field> _fields = new List<Field>();
             List<Column> _columns = new List<Column>();
             List<Row> _rows = new List<Row>();
             List<Box> _boxes = new List<Box>();
-
 
             int indexX = 0;
             int indexY = 0;

@@ -225,5 +225,26 @@ namespace Sudoku
             }
             return unique;
         }
+
+        public void CheckCells()
+        {
+            Board solvedBoard = new Board();
+            solvedBoard.Solve();
+            int fieldIndex = 0;
+            foreach (Field field in this.Fields)
+            {
+                if (field is Row)
+                {
+                    int cellIndex = 0;
+                    foreach (Cell cell in field.Cells)
+                    {
+                        if (cell.Edit)
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }
