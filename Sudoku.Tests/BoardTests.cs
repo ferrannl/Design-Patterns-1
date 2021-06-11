@@ -533,14 +533,16 @@ namespace Sudoku.Tests
             }
             board.CheckCells(solvedBoard);
             int fieldIndex = 0;
-            int cellIndex = 0;
+            
             bool checkedCorrectly = true;
             foreach (var field in board.Fields)
             {
                 if (field is Row)
                 {
+                    int cellIndex = 0;
                     foreach (var cell in field.Cells)
                     {
+
                         if (cell != null && cell.Edit)
                         {
                             if (cell.State == CheckedState.Correct)
@@ -557,8 +559,10 @@ namespace Sudoku.Tests
                                     checkedCorrectly = false;
                                 }
                             }
+                            
                         }
                         cellIndex++;
+
                     }
                 }
                 fieldIndex++;

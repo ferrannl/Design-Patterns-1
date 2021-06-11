@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sudoku.Views
 {
+    [ExcludeFromCodeCoverage]
     internal class InputView
     {
         public string getLine()

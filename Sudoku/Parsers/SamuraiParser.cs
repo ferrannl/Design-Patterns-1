@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sudoku
 {
+    [ExcludeFromCodeCoverage]
     public class SamuraiParser : IParser
     {
         private List<string> _lines;

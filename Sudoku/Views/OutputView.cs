@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Sudoku.Enums;
 
 namespace Sudoku.Views
 {
+    [ExcludeFromCodeCoverage]
     public class OutputView
     {
         public void DrawBoard(Board board)

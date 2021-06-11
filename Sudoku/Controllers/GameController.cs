@@ -1,8 +1,10 @@
 ﻿using Sudoku.Views;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sudoku
 {
+    [ExcludeFromCodeCoverage]
     public class GameController
     {
         private readonly InputView _input;
