@@ -50,7 +50,6 @@ namespace Sudoku
                 if (value != 0)
                 {
                     cell = new Cell(indexX, indexY, value, boxIndex);
-                    Console.WriteLine(cell.Value);
                 }
                 else
                 {

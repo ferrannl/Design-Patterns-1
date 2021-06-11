@@ -19,7 +19,7 @@ namespace Sudoku.Tests
         }
 
         [TestMethod]
-        public void Build4x4Board_WithNormalParser_ReturnsCorrect()
+        public void Build4x4Board_WithNormalParser_ReturnsBoard()
         {
             //Arrange
 
@@ -45,7 +45,7 @@ namespace Sudoku.Tests
         }
 
         [TestMethod]
-        public void Build6x6Board_WithNormalParser_ReturnsCorrect()
+        public void Build6x6Board_WithNormalParser_ReturnsBoard()
         {
             //Arrange
 
@@ -73,7 +73,7 @@ namespace Sudoku.Tests
         }
 
         [TestMethod]
-        public void Build9x9Board_WithNormalParser_ReturnsCorrect()
+        public void Build9x9Board_WithNormalParser_ReturnsBoard()
         {
             //Arrange
 
@@ -100,7 +100,7 @@ namespace Sudoku.Tests
         }
 
         [TestMethod]
-        public void Build4JigsawBoard_WithJigsawParser_ReturnsCorrect()
+        public void Build4JigsawBoard_WithJigsawParser_ReturnsBoard()
         {
             //Arrange
 

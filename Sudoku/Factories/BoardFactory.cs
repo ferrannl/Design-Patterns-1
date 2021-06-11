@@ -23,11 +23,11 @@ namespace Sudoku
             string pattern = @"[0-9]+x[0-9]+";
             Match m = Regex.Match(fileName, pattern);
 
-            if (fileName.Contains("jigsaw"))
+            if (fileName.ToLower().Contains("jigsaw"))
             {
                 _parser = new JigsawParser(lines, board);
             }
-            else if (fileName.Contains("samurai"))
+            else if (fileName.ToLower().Contains("samurai"))
             {
                 //_parser = new SamuraiParser(lines, board);
                 _parser = null;
