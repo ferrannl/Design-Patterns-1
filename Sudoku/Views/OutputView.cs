@@ -193,6 +193,7 @@ namespace Sudoku.Views
                                 // empty cell
                                 else
                                 {
+                                    Console.ForegroundColor = ConsoleColor.White;
                                     Console.BackgroundColor = ConsoleColor.Black;
                                     for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
                                     {
@@ -217,26 +218,54 @@ namespace Sudoku.Views
                             }
                             // currentcell
                             else
-                            {
-                                Console.BackgroundColor = ConsoleColor.White;
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
+                            {// cell with value
+                                if (cell.Value != 0)
                                 {
-                                    bool found = false;
-                                    foreach (var candidate in cell.Candidates)
+                                    if (cell.State == CheckedState.Incorrect)
                                     {
-                                        if (i == candidate)
-                                        {
-                                            found = true;
-                                        }
-                                    }
-                                    if (found)
-                                    {
-                                        Console.Write(i);
+                                        Console.BackgroundColor = ConsoleColor.Red;
+                                        Console.ForegroundColor = ConsoleColor.White;
                                     }
                                     else
                                     {
-                                        Console.Write(" ");
+
+                                        Console.BackgroundColor = ConsoleColor.White;
+                                        Console.ForegroundColor = ConsoleColor.Black;
+                                    }
+                                    for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
+                                    {
+                                        if (cell.Value == i)
+                                        {
+                                            Console.Write(cell.Value);
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Console.BackgroundColor = ConsoleColor.White;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    for (int i = 1; i < board.Fields[0].Cells.Count + 1; i++)
+                                    {
+                                        bool found = false;
+                                        foreach (var candidate in cell.Candidates)
+                                        {
+                                            if (i == candidate)
+                                            {
+                                                found = true;
+                                            }
+                                        }
+                                        if (found)
+                                        {
+                                            Console.Write(i);
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
                                     }
                                 }
                             }

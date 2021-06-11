@@ -29,7 +29,8 @@ namespace Sudoku
             }
             else if (fileName.Contains("samurai"))
             {
-                _parser = new SamuraiParser(lines, board);
+                //_parser = new SamuraiParser(lines, board);
+                _parser = null;
             }
             else if (m.Success)
             {

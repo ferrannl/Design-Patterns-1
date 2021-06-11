@@ -51,7 +51,7 @@ namespace Sudoku
             _board.SetStartCell();
             _solvedBoard.SetStartCell();
 
-            _solvedBoard.Solve();
+           _solvedBoard.Solve();
             _playing = true;
             this.play();
         }
