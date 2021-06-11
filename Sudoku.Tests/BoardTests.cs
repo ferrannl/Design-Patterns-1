@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sudoku.Enums;
 
 namespace Sudoku.Tests
 {
@@ -216,7 +217,7 @@ namespace Sudoku.Tests
         public void Solve_4x4Board_ReturnsCorrect()
         {
             //Arrange
-            
+
             var path = AppDomain.CurrentDomain.BaseDirectory + "/testFile4x4.txt";
             using (var file = File.Create(path))
             {
@@ -461,7 +462,6 @@ namespace Sudoku.Tests
                         }
                     }
                 }
-
             }
             string cellsSolved = "";
             foreach (var field in solvedBoard.Fields)
@@ -476,7 +476,6 @@ namespace Sudoku.Tests
                         }
                     }
                 }
-
             }
             //Assert
             Assert.AreEqual(cells, cellsSolved);
@@ -491,9 +490,91 @@ namespace Sudoku.Tests
         }
 
         [TestMethod]
-        public void Solve_SamuraiBoard_ReturnsCorrect()
+        public void CheckCells_CompareCellsToSolvedBoard_CorrectState()
         {
-         
+
+            var path = AppDomain.CurrentDomain.BaseDirectory + "/testFile9x9.txt";
+            using (var file = File.Create(path))
+            {
+
+            }
+            using (StreamWriter outputFile = new StreamWriter(path))
+            {
+                outputFile.WriteLine("700509001000000000150070063003904100000050000002106400390040076000000000600201004");
+            }
+            var pathToSolvedBoard = AppDomain.CurrentDomain.BaseDirectory + "/testFile9x9Solved.txt";
+            using (var file = File.Create(pathToSolvedBoard))
+            {
+
+            }
+            using (StreamWriter outputFile = new StreamWriter(pathToSolvedBoard))
+            {
+                outputFile.WriteLine("734569821926318745158472963863924157419753682572186439391845276245697318687231594");
+            }
+
+            Board board = _boardFactory.Build(path);
+            Board solvedBoard = _boardFactory.Build(pathToSolvedBoard);
+
+            foreach (var field in board.Fields)
+            {
+                if (field is Row)
+                {
+                    foreach (var cell in field.Cells)
+                    {
+                        if (cell != null)
+                        {
+                            if (cell.Value == 0)
+                            {
+                                cell.Value = 2;
+                            }
+                        }
+                    }
+                }
+            }
+            board.CheckCells(solvedBoard);
+            int fieldIndex = 0;
+            int cellIndex = 0;
+            bool checkedCorrectly = true;
+            foreach (var field in board.Fields)
+            {
+                if (field is Row)
+                {
+                    foreach (var cell in field.Cells)
+                    {
+                        if (cell != null && cell.Edit)
+                        {
+                            if (cell.State == CheckedState.Correct)
+                            {
+                                if (cell.Value != solvedBoard.Fields[fieldIndex].Cells[cellIndex].Value)
+                                {
+                                    checkedCorrectly = false;
+                                }
+                            }
+                            else if (cell.State == CheckedState.Incorrect)
+                            {
+                                if (cell.Value == solvedBoard.Fields[fieldIndex].Cells[cellIndex].Value)
+                                {
+                                    checkedCorrectly = false;
+                                }
+                            }
+                        }
+                        cellIndex++;
+                    }
+                }
+                fieldIndex++;
+            }
+
+            //Assert
+            Assert.IsTrue(checkedCorrectly);
+
+            if (System.IO.File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            if (System.IO.File.Exists(pathToSolvedBoard))
+            {
+                File.Delete(pathToSolvedBoard);
+            }
         }
     }
 }

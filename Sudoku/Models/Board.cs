@@ -60,12 +60,6 @@ namespace Sudoku
             }
         }
 
-        public bool Check()
-        {
-            bool valid = false;
-            return valid;
-        }
-
         public void SetStartCell()
         {
             foreach (var field in _fields)

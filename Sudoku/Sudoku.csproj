@@ -68,7 +68,6 @@
     <Compile Include="Views\InputView.cs" />
     <Compile Include="Views\OutputView.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Puzzles\puzzle2.9x9.txt" />
     <Content Include="Puzzles\puzzle2.jigsaw.txt" />
