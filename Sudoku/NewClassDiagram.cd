@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Overzicht van gerealiseerde design patterns en extra's.&#xD;&#xA;&#xD;&#xA;Factory Pattern&#xD;&#xA;&#xD;&#xA;State Pattern&#xD;&#xA;&#xD;&#xA;Composite Pattern&#xD;&#xA;&#xD;&#xA;Modes kunnen selecteren aan het begin van het spel. De mogelijkheid om hulpgetallen vooraf al te laten generen.&#xD;&#xA;&#xD;&#xA;Nick van Hoesel - (2138178)&#xD;&#xA;Ferran Hendriks - (2130858)">
+    <Position X="13.012" Y="4.783" Height="2.843" Width="5.844" />
+  </Comment>
+  <Class Name="Sudoku.GameController" Collapsed="true">
+    <Position X="1.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAIAAAAgEAKQAAAAQBCEAAAAAAAEAAAAAAg=</HashCode>
+      <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BoardFactory" />
+      <Property Name="InputView" />
+      <Property Name="OutputView" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.BoardFactory" Collapsed="true">
+    <Position X="4.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAQAAAQAAAEAgAAAAAAAACAAAAA=</HashCode>
+      <FileName>Factories\BoardFactory.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Board" />
+      <Property Name="IParser" />
+      <Property Name="IReader" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.Game" Collapsed="true">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GameController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.Board" Collapsed="true">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAIBAAAAAAAyAiAAIgAAAQAAQAAAAJAIAgQA=</HashCode>
+      <FileName>Models\Board.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IState" />
+      <Property Name="Field" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.Box" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Box.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sudoku.Cell" Collapsed="true">
+    <Position X="13" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAACAAAAAIAIgACIAAgBCAAaAA=</HashCode>
+      <FileName>Models\Cell.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CheckedState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sudoku.Column" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Column.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sudoku.Field">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAALAAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
+      <FileName>Models\Field.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cell" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_fields" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Sudoku.Row" Collapsed="true">
+    <Position X="10.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Row.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sudoku.FileReader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Readers\FileReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sudoku.CandidateState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\CandidateState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sudoku.DefinitiveState" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\DefinitiveState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sudoku.Views.InputView" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Views\InputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sudoku.Views.OutputView" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQAAAIAAAAAAAEAAAAAACAAAAAAAEAAAgAA=</HashCode>
+      <FileName>Views\OutputView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sudoku.JigsawParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAQAAAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Parsers\JigsawParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sudoku.NormalParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAQAIAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Parsers\NormalParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sudoku.SamuraiParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABCACAIAAQAIAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Parsers\SamuraiParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Sudoku.IState" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sudoku.Readers.IReader" Collapsed="true">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Readers\IReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sudoku.IParser" Collapsed="true">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Parsers\IParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Sudoku.Enums.CheckedState" Collapsed="true">
+    <Position X="16" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAAIAAA=</HashCode>
+      <FileName>Enums\CheckedState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

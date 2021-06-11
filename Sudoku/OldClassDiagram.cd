@@ -11,12 +11,12 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAEAAgAAAAAAAAAAACAAAAAgAAAAAAAQAAAAAAAgAA=</HashCode>
+      <HashCode>AEAAAAAAAIBAAAAAAAyAiAAIgAAAQAAQAAAAJAIAgQA=</HashCode>
       <FileName>Models\Board.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Field" />
       <Property Name="IState" />
+      <Property Name="Field" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.Row">
@@ -45,11 +45,6 @@
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
-    <AssociationLine Name="Leaf" Type="Sudoku.Cell">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.144" Y="0.254" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="_fields" Type="Sudoku.Field" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="4.75" Y="2.583" />
@@ -61,8 +56,13 @@
         <Position X="0.758" Y="0.339" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="Leaf" Type="Sudoku.Cell">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.144" Y="0.254" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAKAAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABAALAAAAAAAAAAAAAAAACAAAAgAA=</HashCode>
       <FileName>Models\Field.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -80,8 +80,8 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAACAAAAA=</HashCode>
-      <FileName>Builders\BoardFactory.cs</FileName>
+      <HashCode>AAEAAAAAAAAAAAAAAAQAAAQAAAEAgAAAAAAAACAAAAA=</HashCode>
+      <FileName>Factories\BoardFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Board" />
@@ -98,14 +98,14 @@
   <Class Name="Sudoku.Cell" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAgACAAYAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAACAAAAAIAIgACIAAgBCAAaAA=</HashCode>
       <FileName>Models\Cell.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.JigsawParser" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="15" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAQAAAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Parsers\JigsawParser.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -113,7 +113,7 @@
   <Class Name="Sudoku.SamuraiParser" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="18.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABCACAIAAQAIAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Parsers\SamuraiParser.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -121,7 +121,7 @@
   <Class Name="Sudoku.NormalParser" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="16.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAQAAAAAAAABIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAQAIAAAEAABAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Parsers\NormalParser.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -133,47 +133,44 @@
         <Position X="0.156" Y="0.278" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="OutputView" Type="Sudoku.Views.OutputView">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.223" Y="0.516" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="InputView" Type="Sudoku.Views.InputView">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.25" Y="0.494" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="OutputView" Type="Sudoku.Views.OutputView">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.223" Y="0.516" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAAIAAAAgEAKAAAAAQJAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>BAAAAAAAAAIAAAAgEAKQAAAAQBCEAAAAAAAEAAAAAAg=</HashCode>
       <FileName>Controllers\GameController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="BoardFactory" />
-      <Property Name="OutputView" />
       <Property Name="InputView" />
+      <Property Name="OutputView" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.Views.InputView" Collapsed="true">
     <Position X="9.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Views\InputView.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Direction" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Sudoku.Views.OutputView" Collapsed="true">
     <Position X="11" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQAQAAAIAAAAAAAEAAAAAACAAAAAAAEAAAgAA=</HashCode>
       <FileName>Views\OutputView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sudoku.DefinitiveState">
     <Position X="17" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\DefinitiveState.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -181,7 +178,7 @@
   <Class Name="Sudoku.CandidateState">
     <Position X="15" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\CandidateState.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -189,14 +186,14 @@
   <Interface Name="Sudoku.IParser" Collapsed="true">
     <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Parsers\IParser.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Sudoku.IState">
     <Position X="12.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>States\IState.cs</FileName>
     </TypeIdentifier>
   </Interface>

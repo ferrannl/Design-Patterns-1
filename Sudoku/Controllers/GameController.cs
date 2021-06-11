@@ -26,6 +26,30 @@ namespace Sudoku
             start();
         }
 
+        public BoardFactory BoardFactory
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal InputView InputView
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public OutputView OutputView
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void start()
         {
             while (!_levelSelected)
@@ -53,7 +77,7 @@ namespace Sudoku
             _board.SetStartCell();
             _solvedBoard.SetStartCell();
 
-           _solvedBoard.Solve();
+            _solvedBoard.Solve();
             _playing = true;
             this.play();
         }

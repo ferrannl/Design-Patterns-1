@@ -15,6 +15,30 @@ namespace Sudoku
             _reader = reader;
         }
 
+        public Board Board
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public IParser IParser
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public IReader IReader
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public Board Build(string filePath)
         {
             Board board = new Board();

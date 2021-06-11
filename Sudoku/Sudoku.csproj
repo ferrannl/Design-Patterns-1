@@ -34,7 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="OldClassDiagram.cd" />
+    <None Include="NewClassDiagram.cd" />
     <None Include="Practicumopdracht_DP1_2021_Sudoku.pdf" />
     <None Include="Rubric Design Patterns 1 2020-2021.pdf" />
     <None Include="Puzzles\puzzle.4x4" />

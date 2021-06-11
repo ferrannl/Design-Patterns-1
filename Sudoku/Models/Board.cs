@@ -40,6 +40,22 @@ namespace Sudoku
             }
         }
 
+        public IState IState
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Field Field
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public Board()
         {
             _fields = new List<Field>();

@@ -102,5 +102,13 @@ namespace Sudoku
                 }
             }
         }
+
+        public CheckedState CheckedState
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

@@ -30,5 +30,13 @@ namespace Sudoku
             {
             }
         }
+
+        public Cell Cell
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
